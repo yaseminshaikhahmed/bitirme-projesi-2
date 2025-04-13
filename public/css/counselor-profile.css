@@ -1,0 +1,21 @@
+.therapist{
+    width: 200px;
+    height: 200px;
+
+}
+
+.btn{
+    background-color: #327775 !important;
+    color: white !important;
+}
+
+.btn:hover{
+    background-color: white !important;
+    color: #327775 !important;
+    border: #327775 solid  1px !important ;
+
+}
+
+.bg{
+    background-color: #f0f8ff;
+}

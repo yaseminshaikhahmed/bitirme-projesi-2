@@ -1,0 +1,44 @@
+body{
+    background-color: #ebf0f3;
+}
+
+nav{
+    background-color: white;
+}
+
+#navbarNavAltMarkup{
+    justify-content: right;
+    margin-right: 20vw;
+    font-size: 20px;
+    
+}
+img{
+    margin-left: 10vw;
+}
+.btn{
+    background-color: #327775;
+    color: white;
+    padding: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    /* margin-left: 4vw; */
+}
+.btn:hover{
+    border-color: #327775;
+
+}
+.navbar, .navbar-expand-lg{
+    box-shadow: 5px 10px 20px #dfd7d7;
+    width: 100%;
+}
+
+.db-con:hover{
+    transform: scale(1.1); 
+    cursor: pointer;
+
+}
+
+.gray{
+    color: gray;
+}
+

@@ -1,0 +1,17 @@
+.specialty{
+    float: left;
+}
+
+.therapist{
+    width: 130px;
+    height:130px;
+    border-radius: 50%;
+    margin-right: 8vw;
+    margin-left: 8vw;
+    
+
+}
+
+.checked {
+    color: orange;
+  }

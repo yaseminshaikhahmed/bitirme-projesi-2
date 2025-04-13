@@ -1,0 +1,164 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.navbar, .navbar-expand-lg{
+    box-shadow: 5px 10px 20px #dfd7d7;
+    width: 100%;
+}
+.logo{
+    margin-left: 10vw;
+}
+
+#main-div{
+    display: flex;
+    align-items: center;
+    
+    
+
+}
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.line{
+    display: flex;
+}
+.bi{
+    padding-top: 6px;
+    font-size: 17px;
+    color: #327775;
+    padding-right: 6px;
+}
+.con{
+    display: flex;
+    flex-direction: column;
+    
+    height: 80vh;
+    margin-top: 20px;
+    padding: 40px;
+    width: 50%;
+    
+    
+}
+
+.therapist{
+    width: 130px;
+    height:130px;
+    border-radius: 50%;
+    border: white solid 3px;
+
+}
+
+
+
+#pictures{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+.btn{
+    background-color: #327775 !important;
+    color: white !important;
+    padding: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+    /* margin-left: 4vw; */
+    width: 70%;
+    
+}
+.btn:hover{
+    border-color: #327775;
+
+}
+
+input{
+    border: #d1d4da solid 1.5px;
+    border-radius: 5px;
+    color: #6b7280;
+    padding: 10px;
+    margin-top: 18px !important;
+    font-size: 20px !important;
+    
+    
+}
+
+.gray{
+    color: #6b7280;
+}
+
+.flex-row{
+    display: flex;
+
+}
+
+.flex-col{
+    display: flex;
+    flex-direction: column;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.mt18{
+    margin-top: 18px;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.align-space{
+    justify-content: space-between;
+}
+
+a{
+    text-decoration: none !important;
+}
+
+.gr{
+    color: #327775;
+    margin-left: 5px;
+}
+
+.w70{
+    width: 70% !important;
+}
+
+
+.align-left{
+    align-items: flex-start !important;
+}
+
+.padd{
+    padding: 150px;
+}
+
+.form-check-input:checked {
+    background-color: #327775 !important;
+    border-color: #327775 !important;
+}
+
+.error{
+    color: red;
+}
+
+@media (max-width: 1000px){
+    #pics{
+        display:none;
+    }
+    #main-div{
+        display: flex;
+        justify-content: center;
+    }
+    
+}

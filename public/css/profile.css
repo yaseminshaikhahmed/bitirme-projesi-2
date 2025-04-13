@@ -1,0 +1,29 @@
+.user{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.gray{
+    color: gray;
+}
+
+i:hover{
+    cursor: pointer;
+    
+}
+
+.pin{
+    border: solid 1px black;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.edit{
+    padding-top: 180px;
+    
+}
+
+.edit:hover{
+    cursor: pointer;
+}
