@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
-const { isEmail } = require('validator')
-const bcrypt = require('bcrypt')
+const { isEmail } = require('validator') // to make sure the input is a valid email
+const bcrypt = require('bcrypt') //for password encryption
 
 
 const userSchema = new mongoose.Schema({
@@ -27,6 +27,13 @@ const userSchema = new mongoose.Schema({
     }
 
     
+})
+
+userSchema.add({
+    bio:{
+        type:String,
+        maxlength:300
+    }
 })
 
   

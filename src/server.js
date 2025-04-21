@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const path = require('path');
+//const path = require('path');
 const authRoutes = require('./routes/authRoutes')
 const cookieParser = require('cookie-parser')
 const { requireAuth, checkUser } = require('./middleware/authMiddleware')
@@ -12,6 +12,8 @@ const PORT = 5000;
 const dbURL = "mongodb+srv://yasmin:8dr9OXJ8BTVhy4U4@cluster0.kneqcji.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 //Middleware
+//register view engine
+app.set('view engine', 'ejs')
 // Serve static files from the "public" directory
 app.use(express.static('./public'));
 app.use(express.json())
@@ -29,16 +31,17 @@ mongoose.connect(dbURL)
 
 //Routes
 //apply to all routes
-app.get('/*', checkUser)
+//app.all('{*any}', checkUser, (req, res, next) => {})
+//app.get('*', checkUser)
 //app.use(checkUser); //not working as expected??
 
 // Basic route
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public', 'index.html'));
+    res.render('../public/views/index')
 });
 //homepage
-app.get('/homepage', requireAuth, (req, res)=>{
-    res.sendFile(path.join(__dirname, '../public', 'homepage.html'));
+app.get('/homepage', requireAuth, checkUser, (req, res)=>{
+    res.render('../public/views/homepage')
 })
 
 

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anasayfa</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/homepage.css">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <div class="flex-col justify-center align-center">
+        <!--navbar-->
+        <nav class="navbar navbar-expand-lg">
+        
+            <a class="navbar-brand" href="#"><img src="./images/logo final.png" alt=""></a>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <select class="form-select width-20" id="logout" aria-label="Default select example">
+                    <option selected>Dashboard</option>
+                    <option value="1">Profile</option>
+                    <option value="2">Randevular</option>
+                    <option value="3">Log out</option>
+                  </select>
+            </div>
+            
+            
+          
+        </nav>
+        <!--/navbar-->
+
+        <!--Welcome Section-->
+        <div class="flex-col justify-center align-center bg-white border width-75 mt-5 height">
+            <h2>Hoş geldiniz, <span id="name"><%= user.name %></span>!</h2>
+            <p>Bugün nasıl hissediyorsunuz?</p>
+            <textarea name="" id="" class="width-75"></textarea>
+            <div class="flex-row justify-end width-75"><button class="btn m-2">Yükle</button></div>
+            <p>Ruh halinizi takip etmek, kalıpları anlamanıza ve ruhsal sağlığınızı iyileştirmenize yardımcı olabilir.</p>
+        </div>
+
+        <!--/Welcome Section-->
+
+        <!--Dashboard-->
+        <div class="flex-row justify-center align-center  width-75 mt-5 bg-white border height">
+            <div class="db-con flex-col align-center justify-center border p-3 h-4 m-3">
+                <h5>Randevu al</h5>
+                <p class="text-center">Profesyonel biriyle bir seans planlayın.</p>
+            </div>
+            <div class="db-con flex-col align-center justify-center border p-3 h-4 m-3">
+                <h5>Destek Grubuna Katıl</h5>
+                <p class="text-center">Sizi anlayan insanlarla bağlantı kurun.</p>
+            </div>
+            <div class="db-con flex-col align-center justify-center border p-3 h-4 m-3">
+                <h5>Duygularınızı takip et</h5>
+                <p class="text-center">Daha önce nasıl hissettiğinizi takip edin.</p>
+            </div>
+            <div class="db-con flex-col align-center justify-center border p-3 h-4 m-3">
+                <h5>Diğer insanlarla iletişim kur</h5>
+                <p class="text-center">Deneyiminizi başkalarıyla paylaşın</p>
+            </div>
+            
+        </div>
+
+     
+
+        <!--/Dashboard-->
+
+
+        <!-- Appointments & Reminders -->
+         <div class="flex-col justify-center align-center bg-white border width-75 mt-5 height">
+            <h3>Yaklaşan Randevu</h3>
+            <p>Henüz randevun yok</p>
+            <button class="btn">Randevu al</button>
+         </div>
+
+        <!-- /Appointments & Reminders -->
+         
+
+        <!-- Community & Support Groups -->
+         <div class="flex-col justify-center align-center bg-white border width-75 mt-5 height">
+            <h3>Topluluk & Destek Grupları</h3>
+            <p>Anksiyete, depresyon veya farkındalık için bir destek grubuna katılın.</p>
+            <p>Henüz hiç bir gruba katılmadın</p>
+            <button class="btn">Grubu bul</button>
+         </div>
+        <!-- /Community & Support Groups -->
+
+
+        <!-- Mental Health Tips-->
+        <div class="flex-col justify-center align-center bg-white border width-75 mt-5 height">
+            <h3>Günün Zihinsel Sağlık İpucu</h3>
+            <p>Bugünün İpucu: 5 dakikalık nefes alma molası verin. Gözlerinizi kapatın, derin nefes alın ve yavaşça verin.</p>
+
+        </div>
+        
+        <!--/ Mental Health Tips-->
+
+         
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 InnerBalance. Tüm hakları saklıdır.</p>
+        </footer>
+
+        <!-- /Footer -->
+
+    </div>
+
+<script src="./js/logout.js"></script>
+<script src="./js/homepage.js"></script>
+</body>
+</html>

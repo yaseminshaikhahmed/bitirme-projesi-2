@@ -1,4 +1,4 @@
-const path = require('path');
+//const path = require('path');
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
 require('dotenv').config(); //to access secret key form .env
@@ -47,11 +47,11 @@ const createToken = (id)=>{
 
 
 module.exports.signup_get = (req, res)=>{
-    res.sendFile(path.join(__dirname, '../../public', 'sign-up.html'));
+    res.render('../public/views/sign-up')
 }
 
 module.exports.login_get = (req, res)=>{
-    res.sendFile(path.join(__dirname, '../../public', 'login.html'));
+    res.render('../public/views/login')
 }
 
 module.exports.signup_post = async (req, res)=>{
@@ -87,5 +87,5 @@ module.exports.login_post = async (req, res)=>{
 
 module.exports.logout_get =(req, res)=>{
     res.cookie('jwt', '', {maxAge:1})//removing the token value and giving a very short expiring date
-    res.redirect('/')
+    res.redirect('/signup')
 }
