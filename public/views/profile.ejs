@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="./css/styles.css">    
     <link rel="stylesheet" href="./css/profile.css">    
     <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/font/bootstrap-icons.css">
     <title>Profile</title>
 </head>
 <body>
@@ -14,14 +14,47 @@
     <div class="flex-col justify-center align-center">
         <h2>Profil</h2>
         <div class="flex-row">
-            <img src="test3.jpg" alt="" class="user">
-            <div class="edit"><i class="bi bi-pen pin"></i></div>
+            <img src="../images/anon.png" alt="" class="user">
+            <div class="edit" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"><i class="bi bi-pen pin"></i></div>
+            
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Profili Düzenle</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/profile" method="PUT" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Resim:</label>
+              <input type="file" class="form-control" id="recipient-name" accept="image/*" name="pic"/>
+            </div>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">İsim:</label>
+              <input type="text" class="form-control" id="recipient-name" placeholder="<%= user.name %>" name="name1">
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Bio:</label>
+              <textarea class="form-control" id="message-text" name="bio"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+          <button type="button" class="btn btn-primary" type="submit">Değişiklikleri kaydet</button>
+        </div>
+      </div>
+    </div>
+  </div>
         </div>
         <!-- name -->
-        <h5>Cana G.</h5>
+        <h5>
+           <%= user.name %>
+        </h5>
 
         <!-- bio -->
-        <div class="width-75">Merhaba, ben Cana! Günlük stresle başa çıkmak ve mental sağlığımı geliştirmek için buradayım. Düzenli olarak danışmanımla görüşerek kendimi daha iyi hissetmeye çalışıyorum. Ayrıca mindfulness ve meditasyon gibi teknikleri keşfetmeye başladım. Küçük adımlarla büyük değişiklikler yapabileceğime inanıyorum!</div>
+        <div class="width-75"><%= user.bio %></div>
         <!-- /bio -->
 
          <!-- Past Feelings -->
@@ -46,6 +79,6 @@
           </div>
          <!-- /Past Feelings -->
     </div>
-    
+<script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

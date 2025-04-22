@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 //const path = require('path');
 const authRoutes = require('./routes/authRoutes')
+const profileRoutes = require('./routes/profileRoutes')
 const cookieParser = require('cookie-parser')
 const { requireAuth, checkUser } = require('./middleware/authMiddleware')
 
@@ -15,7 +16,7 @@ const dbURL = "mongodb+srv://yasmin:8dr9OXJ8BTVhy4U4@cluster0.kneqcji.mongodb.ne
 //register view engine
 app.set('view engine', 'ejs')
 // Serve static files from the "public" directory
-app.use(express.static('./public'));
+app.use(express.static('public'));
 app.use(express.json())
 app.use(cookieParser())
 
@@ -43,9 +44,14 @@ app.get('/', (req, res) => {
 app.get('/homepage', requireAuth, checkUser, (req, res)=>{
     res.render('../public/views/homepage')
 })
+app.get('/profile', (req, res)=>{
+    res.render('../public/views/profile')
+})
 
 
+//Middleware
 app.use(authRoutes)
+app.use(profileRoutes)
 
 
 

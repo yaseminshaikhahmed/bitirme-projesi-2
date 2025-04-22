@@ -5,13 +5,13 @@ const sessionSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    user_id:{ //get the user's id that took this session
+    user:{ //get the user's id that took this session
          
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'User', // Refers to the "User" model
         required:true
     },
-    counselor_id:{
+    counselor:{
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Counselor', // Refers to the "User" model
         required:true
