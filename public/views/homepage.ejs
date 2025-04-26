@@ -32,8 +32,13 @@
         <div class="flex-col justify-center align-center bg-white border width-75 mt-5 height">
             <h2>Hoş geldiniz, <span id="name"><%= user.name %></span>!</h2>
             <p>Bugün nasıl hissediyorsunuz?</p>
-            <textarea name="" id="" class="width-75"></textarea>
-            <div class="flex-row justify-end width-75"><button class="btn m-2">Yükle</button></div>
+            <!-- Feeling -->
+             <form action="" id="feeling-form">
+            <textarea  id="" class="width-100" name="feeling"></textarea>
+            <div class="flex-row justify-end width-75">
+                <button class="btn m-2" type="submit">Yükle</button>
+            </div>
+             </form>
             <p>Ruh halinizi takip etmek, kalıpları anlamanıza ve ruhsal sağlığınızı iyileştirmenize yardımcı olabilir.</p>
         </div>
 

@@ -14,6 +14,25 @@ const feelingSchema = mongoose.Schema({
         required:true
     }
 })
+feelingSchema.add({
+    user_id:{ //get the user's id that took this session
+             
+            type: mongoose.Schema.Types.ObjectId, 
+            ref: 'User', // Refers to the "User" model
+            required:true
+        }
+})
 
-// const Feeling = mongoose.model('feeling', feelingSchema)
-// module.exports = Feeling
+//middleware
+feelingSchema.pre('save', function(next){
+    console.log('Trying to save: ')
+    next()
+})
+feelingSchema.post('save', function(doc, next){
+    console.log('new feeling was created & saved', doc)
+    next()
+})
+
+
+const Feeling = mongoose.model('feeling', feelingSchema)
+module.exports = Feeling

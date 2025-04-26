@@ -25,7 +25,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="/profile" method="PUT" enctype="multipart/form-data">
+          <form>
             <div class="mb-3">
               <label for="recipient-name" class="col-form-label">Resim:</label>
               <input type="file" class="form-control" id="recipient-name" accept="image/*" name="pic"/>
@@ -38,12 +38,13 @@
               <label for="message-text" class="col-form-label">Bio:</label>
               <textarea class="form-control" id="message-text" name="bio"></textarea>
             </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+              <button class="btn btn-primary" type="submit">Değişiklikleri kaydet</button>
+            </div>
           </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
-          <button type="button" class="btn btn-primary" type="submit">Değişiklikleri kaydet</button>
-        </div>
+        </div>`
+        
       </div>
     </div>
   </div>
@@ -80,5 +81,6 @@
          <!-- /Past Feelings -->
     </div>
 <script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/profile.js"></script>
 </body>
 </html>

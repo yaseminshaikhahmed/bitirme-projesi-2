@@ -1,5 +1,7 @@
 btn = document.querySelector('select')
 
+
+//moving to another page
 btn.addEventListener('change', async(e)=>{
     e.preventDefault() 
 
@@ -20,6 +22,61 @@ btn.addEventListener('change', async(e)=>{
           }
       btn.value = '0'
 }
+
+
+})
+//Posting a feeling
+
+//get the form
+const form = document.querySelector('form')
+//getdate2
+const date2 = new Date()
+const year = date2.getFullYear()
+const month = date2.getMonth() + 1
+const day = date2.getDate()
+const hour = date2.getHours()
+const minute = date2.getMinutes()
+
+//adding a zero if any of the values are singular
+m = month.toString()
+if(m.length == 1){m = "0"+m}
+da = day.toString()
+if(da.length == 1){da = "0"+da}
+
+//convert date2 into a string
+
+const date = da + "." + m + "."+ year.toString()
+
+
+//adding a zero if any of the values are singular
+h = hour.toString()
+if(h.length == 1){h = "0"+h}
+
+min = minute.toString()
+if(min.length == 1){min = "0"+min}
+
+//convert time into a string
+const time = h + ":" + min
+console.log(time)
+
+form.addEventListener('submit', async(e)=>{
+    e.preventDefault() 
+    //get the values
+    const content = form.feeling.value
+    try{
+      const res = await fetch('/homepage', {
+        method:"POST",
+        body:JSON.stringify({date,time,content}), //this is fine
+        headers: {'Content-Type':'application/json'}
+    })
+      const data = await res.json()
+      console.log(data)
+      alert("Duygunuz kayidedildi")
+    }catch(err){
+      console.log(err,"Can't save new feeling homepage.js")
+    }
+
+
 
 
 })

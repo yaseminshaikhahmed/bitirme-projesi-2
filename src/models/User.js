@@ -21,9 +21,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please enter a password'],
         minlength: [6, 'Minimum password length is 6 characters']
-    },
-    picture: {
-        type: String
     }
 
     
@@ -33,6 +30,14 @@ userSchema.add({
     bio:{
         type:String,
         maxlength:300
+    }
+})
+
+
+userSchema.add({
+    picture:{
+        data: Buffer,
+        contentType: String
     }
 })
 

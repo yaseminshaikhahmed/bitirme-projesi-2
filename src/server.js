@@ -3,8 +3,10 @@ const mongoose = require('mongoose');
 //const path = require('path');
 const authRoutes = require('./routes/authRoutes')
 const profileRoutes = require('./routes/profileRoutes')
+const homepageRoutes = require('./routes/homepageRoutes')
 const cookieParser = require('cookie-parser')
 const { requireAuth, checkUser } = require('./middleware/authMiddleware')
+
 
 
 const app = express();
@@ -41,17 +43,18 @@ app.get('/', (req, res) => {
     res.render('../public/views/index')
 });
 //homepage
-app.get('/homepage', requireAuth, checkUser, (req, res)=>{
-    res.render('../public/views/homepage')
-})
-app.get('/profile', (req, res)=>{
-    res.render('../public/views/profile')
-})
+// app.get('/homepage', requireAuth, checkUser, (req, res)=>{
+//     res.render('../public/views/homepage')
+// })
+// app.get('/profile', requireAuth, checkUser, (req, res)=>{
+//     res.render('../public/views/profile')
+// })
 
 
 //Middleware
 app.use(authRoutes)
 app.use(profileRoutes)
+app.use(homepageRoutes)
 
 
 

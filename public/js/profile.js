@@ -1,22 +1,34 @@
 const form = document.querySelector('form')
 
 form.addEventListener('submit', async(e)=>{
-    e.preventDefault() 
+    //e.preventDefault() 
     //get the values
     const name = form.name1.value
-    const pic = form.pic.value
+    const picture = form.pic.value
     const bio = form.bio.value
+    console.log(name)
+    
     try{
         const res = await fetch('/profile',{
             method:"PUT",
-            body:JSON.stringify({name, pic, bio}),
-            headers: {'Content-Type':'application/json'}
+            body:JSON.stringify({name, picture, bio}),
+            headers: {
+                'Authorization': 'token',
+                'Content-Type':'application/json'
+            }
 
         })
-        const data = await res.json()
-        console.log("data is ",data)
+        
+
+        
     }catch(err){
         console.log(err)
     }
 
 })
+
+window.addEventListener('pageshow', function(event) {
+    if (event.persisted) {
+      window.location.reload();
+    }
+  });
