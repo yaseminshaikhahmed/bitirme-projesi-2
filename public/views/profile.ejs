@@ -59,18 +59,18 @@
         <!-- /bio -->
 
          <!-- Past Feelings -->
-          <div class="flex-col width-75">
+          <div class="flex-col width-75" id="posts">
             <!-- feeling -->
-             <div class=" rounded m-3 p-4 bg-f">
+             <div class=" rounded m-3 p-4 bg-f" id="post">
                 <!-- date -->
                  <div class="flex-row gray">
-                    <p class="me-3">28.03.2025</p>
-                    <p>18:04</p>
+                    <p class="me-3" id="date"><%= feelingPosts[0].date %></p>
+                    <p id="time"><%= feelingPosts[0].time %></p>
                  </div>
                  <!-- comment -->
-                  <div class="">
+                  <div class="" id="content">
                     
-                    Sabah çok motive değildim ve odaklanmakta zorlandım. Ancak yürüyüşe çıkınca biraz daha iyi hissettim. Danışmanımla bunu konuşacağım.
+                    <%= feelingPosts[0].content %>
 
                   </div>
                   <div class="flex-row width-100 justify-end">
@@ -80,7 +80,10 @@
           </div>
          <!-- /Past Feelings -->
     </div>
+    <script id="posts-data" type="application/json">
+      <%- JSON.stringify(feelingPosts) %>
+    </script>
 <script src="../js/bootstrap.bundle.min.js"></script>
-<script src="../js/profile.js"></script>
+<script src="../js/profile.js" defer></script>
 </body>
 </html>
