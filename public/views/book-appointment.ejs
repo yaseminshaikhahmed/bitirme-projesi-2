@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/calendar.css">
+    <link rel="stylesheet" href="./css/btn.css">
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/font/bootstrap-icons.css">
+
+    <title>Document</title>
+
+</head>
+<body>
+    <div id="main" class="flex-row justify-center">
+    <%- include('calendar') %>
+    <!-- Send the counselor a message -->
+     <div class="m-5 flex-col">
+        <h2>
+            Danışmana bir mesaj gönder
+        </h2>
+        <p>Ödemeyi tamamladıktan sonra mesaj gönderilecektir</p>
+        <textarea name="" id="" class="width*2 h-4 mt-5 border p-2"></textarea>
+        <div class="flex-row justify-end">
+            <button class="btn mt-5">Gönder</button>
+        </div>
+     </div>
+
+</div>
+<!-- Appointments Dates -->
+ <div class="flex-row justify-center">
+    <div class="border m-5 p-3 rounded date-width text-center clicked">15:00</div>
+    <div class="border m-5 p-3 rounded date-width text-center">14:00</div>
+    <div class="border m-5 p-3 rounded date-width text-center">17:30</div>
+    <div class="border m-5 p-3 rounded date-width text-center">20:00</div>
+ </div>
+<!-- Book an appointment button -->
+<div class="flex-row justify-center mt-4"><button class="btn">Randevu al</button></div>
+
+    <script src="./js/calendar.js"></script>
+    
+</body>
+</html>

@@ -40,8 +40,35 @@ const counselorSchema = new mongoose.Schema({
 
 })
 
+//fire a function after doc saved to db - mongoose hooks
+counselorSchema.post('save', function(doc, next){
+    console.log('new counselor was created & saved', doc)
+
+    next()
+
+})
+//bcrypting the password
+counselorSchema.pre('save', async function(next){
+    const salt = await bcrypt.genSalt()
+    this.password = await bcrypt.hash(this.password, salt)
+    next()
+})
+
+//static method to login counselor
+counselorSchema.statics.login = async function(email, password){
+    const counselor = await this.findOne({ email })
+    if(counselor){
+      const auth = await bcrypt.compare(password, counselor.password)
+      if(auth){
+        return counselor
+      }
+      throw Error('incorrect password')
+    }
+    throw Error('incorrect email')
+}
+
 
 //Creating the table in the data base
 
-// const Counselor = mongoose.model('counselor', counselorSchema)
-// module.exports = Counselor
+const Counselor = mongoose.model('counselor', counselorSchema)
+module.exports = Counselor

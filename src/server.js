@@ -1,9 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
+
+
 //const path = require('path');
 const authRoutes = require('./routes/authRoutes')
+const  cAuthRoutes= require('./routes/conAuthRoutes')
 const profileRoutes = require('./routes/profileRoutes')
 const homepageRoutes = require('./routes/homepageRoutes')
+const conHomepageRoutes = require('./routes/conHomepageRoutes')
+
+
+
 const cookieParser = require('cookie-parser')
 const { requireAuth, checkUser } = require('./middleware/authMiddleware')
 
@@ -32,45 +39,29 @@ mongoose.connect(dbURL)
     .catch((err) => console.log(err));
 
 
-//Routes
-//apply to all routes
-//app.all('{*any}', checkUser, (req, res, next) => {})
-//app.get('*', checkUser)
-//app.use(checkUser); //not working as expected??
+
 
 // Basic route
 app.get('/', (req, res) => {
     res.render('../public/views/index')
 });
-//homepage
-// app.get('/homepage', requireAuth, checkUser, (req, res)=>{
-//     res.render('../public/views/homepage')
-// })
-// app.get('/profile', requireAuth, checkUser, (req, res)=>{
-//     res.render('../public/views/profile')
-// })
+
+app.get('/counselor-profile',(req, res)=>{
+    res.render('../public/views/counselor-profile')
+})
+
+
+app.get('/book-appointment',(req, res)=>{
+    res.render('../public/views/book-appointment')
+})
 
 
 //Middleware
 app.use(authRoutes)
 app.use(profileRoutes)
 app.use(homepageRoutes)
+app.use(cAuthRoutes)
+app.use(conHomepageRoutes)
 
 
 
-// //cookies 
-// app.get('/set-cookies', (req, res) => {
-    
-//     //res.setHeader('Set-Cookie', 'newUser=true')
-//     res.cookie('newUser', false, { maxAge: 1000*60*60*24, httpOnly:true })
-//     res.send('you got the cookie')
-
-
-// })
-
-// app.get('/read-cookies', (req, res) => {
-//     const cookies = req.cookies
-//     console.log(cookies)
-//     res.json(cookies)
-
-// })

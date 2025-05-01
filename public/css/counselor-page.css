@@ -1,0 +1,35 @@
+.w-25{
+    width: 25%;
+}
+.n{
+    border-style: none;
+}
+button:hover{
+    background-color: gray;
+    color: white;
+}
+.border-right{
+
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.border-left{
+
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+.border-line{
+    border-top: none;
+    border-bottom: none;
+}
+
+.width{
+    width: 40vw;
+}
+
+img{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}

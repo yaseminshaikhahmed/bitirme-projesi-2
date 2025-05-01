@@ -1,0 +1,15 @@
+.btn2{
+    background-color: #327775 !important;
+    color: white !important;
+    padding: 15px !important;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+    border-radius: 10%;
+    /* margin-left: 4vw; */
+    }
+    .btn2:hover{
+    border-color: #327775 !important;
+    background-color: white !important;
+    color: #327775 !important;
+    
+    }

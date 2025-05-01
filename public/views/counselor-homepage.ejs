@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anasayfa</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/btn.css">
+    <link rel="stylesheet" href="./css/counselor-page.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/font/bootstrap-icons.css">
+</head>
+<body>
+     <!-- navbar -->
+        <div class="flex-row justify-end m-4">
+     <select class="form-select width-20"  aria-label="Default select example">
+        <option selected value="0">Anasayfa</option>
+        <option value="1">Profile</option>
+        <option value="3" id="logout">Log out</option>
+      </select>
+    </div>
+
+<!-- /navbar -->
+<!-- Welcoming section -->
+    <div id="main" class="flex-col justify-center align-center ">
+       <h2>Hoş geldiniz, <span id="name"><%= counselor.name %></span>!</h2>
+
+       <!-- Navigating -->
+        <div class="flex-row mt-5">
+            <button id="appointments" class="border-left p-4 n ps-5" onclick="changeBg(this.id); changeApp()">Randevular</button>
+            <button id="messages" class="pe-5 ps-5 border-line" onclick="changeBg(this.id); changeMess()">Mesajlar</button>
+            <button id="feedback" class="border-right p-4 n pe-5" onclick="changeBg(this.id); changeFeed()">Geri Bildirim</button>
+        </div>
+        <!-- /Navigationg -->
+
+        <!--Body  -->
+        <div id="body" class="flex-col">
+ 
+            
+        </div>
+
+        <!-- /Body -->
+        
+    </div>
+
+    <script src="./js/calendar.js"></script>
+    <script src="./js/counselor-homepage.js"></script>
+</body>
+</html>

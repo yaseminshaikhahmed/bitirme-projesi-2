@@ -27,15 +27,13 @@ btn.addEventListener('change', async(e)=>{
 })
 //Posting a feeling
 
-//get the form
-const form = document.querySelector('form')
-//getdate2
+//Get date
+function getDate(){
 const date2 = new Date()
 const year = date2.getFullYear()
 const month = date2.getMonth() + 1
 const day = date2.getDate()
-const hour = date2.getHours()
-const minute = date2.getMinutes()
+
 
 //adding a zero if any of the values are singular
 m = month.toString()
@@ -46,6 +44,16 @@ if(da.length == 1){da = "0"+da}
 //convert date2 into a string
 
 const date = da + "." + m + "."+ year.toString()
+return date
+
+}
+
+//get time
+function getTime(){
+  const date2 = new Date()
+const day = date2.getDate()
+const hour = date2.getHours()
+const minute = date2.getMinutes()
 
 
 //adding a zero if any of the values are singular
@@ -57,11 +65,18 @@ if(min.length == 1){min = "0"+min}
 
 //convert time into a string
 const time = h + ":" + min
-console.log(time)
+return time
+}
+//get the form
+const form = document.querySelector('form')
+
+
 
 form.addEventListener('submit', async(e)=>{
     e.preventDefault() 
     //get the values
+    const date = getDate()
+    const time = getTime()
     const content = form.feeling.value
     try{
       const res = await fetch('/homepage', {

@@ -1,10 +1,14 @@
 const mongoose = require('mongoose')
 
 const sessionSchema = new mongoose.Schema({
-    date:{
+   date:{
         type:String,
         required:true
-    },
+    } ,
+   time:{
+        type:String,
+        required:true
+    } ,
     user:{ //get the user's id that took this session
          
         type: mongoose.Schema.Types.ObjectId, 
