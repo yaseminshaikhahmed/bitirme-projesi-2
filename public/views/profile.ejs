@@ -14,7 +14,12 @@
     <div class="flex-col justify-center align-center">
         <h2>Profil</h2>
         <div class="flex-row">
-            <img src="../images/anon.png" alt="" class="user">
+          
+            <div>
+              <img src="images/<%= user.picture %>" alt="Uploaded Picture" style="max-width:200px;" class="user">
+            </div>
+          
+          
             <div class="edit" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"><i class="bi bi-pen pin"></i></div>
             
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -28,7 +33,7 @@
           <form>
             <div class="mb-3">
               <label for="recipient-name" class="col-form-label">Resim:</label>
-              <input type="file" class="form-control" id="recipient-name" accept="image/*" name="pic"/>
+              <input type="file" class="form-control" id="recipient-name" accept="image/*" name="picture"/>
             </div>
             <div class="mb-3">
               <label for="recipient-name" class="col-form-label">İsim:</label>
@@ -43,7 +48,7 @@
               <button class="btn btn-primary" type="submit">Değişiklikleri kaydet</button>
             </div>
           </form>
-        </div>`
+        </div>
         
       </div>
     </div>

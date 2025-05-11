@@ -54,13 +54,13 @@ const getCounselor = async (req, res, next) => {
       req.counselor = counselor;
       next();
     } catch (err) {
-      console.log(err);
+      console.log(err.message);
       req.counselor = null;
-      res.status(401).json({ error: 'Unauthorized. Invalid token.' });
+      res.status(401).json({ error: 'Unauthorized counselor in authMiddleware. Invalid token.' });
     }
   } else {
     req.counselor = null;
-    res.status(401).json({ error: 'Unauthorized. No token.' });
+    res.status(401).json({ error: 'Unauthorized counselor in authMiddleware. No token.' });
   }
 };
 

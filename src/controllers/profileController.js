@@ -22,11 +22,13 @@ module.exports.profile_get = async (req, res) => {
 module.exports.profile_put = async (req, res) => {
     try{
         const id = req.user._id
-        const {name, picture, bio} = req.body
+        const {name, bio} = req.body
+        const picture = req.file
+        console.log(picture)
 
         const updatedUser = await User.findByIdAndUpdate(
             id,
-            {name, picture, bio},
+            {name, picture:req.file.filename, bio},
             { new:true, runValidators:true }
         )
         if (!updatedUser) {
@@ -36,7 +38,7 @@ module.exports.profile_put = async (req, res) => {
           res.status(200).json({ message: 'Profile updated', user: updatedUser });
 
     }catch(err){
-        console.error('Error updating profile:', err);
+        console.error('Error updating profile:', err.message);
     res.status(500).json({ error: 'Failed to update profile' });
 
     }

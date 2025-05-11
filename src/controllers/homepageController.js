@@ -3,26 +3,7 @@ const Feeling = require('../models/Feeling')
 module.exports.homepage_get = (req, res)=>{
     res.render('../public/views/homepage')
 }
-// module.exports.homepage_post = async(req, res)=>{
-    
-//     try{
-//          //console.log(req.body)
-//         const {date, time, content} = req.body
-//         const feeling = await Feeling.create(
-//             { date, time, content }
-//         )
-//         res.status(201).json({feeling})
-//         console.log("in homepageController.js Everything is fine")
-        
 
-//     }catch(err){
-//         // console.log(req.body)
-//         res.status(400).json({err})
-//         console.log("in homepageController.js it's not working")
-//     }
-
-
-// }
 module.exports.homepage_post = async (req, res) => {
     try {
         // Better validation

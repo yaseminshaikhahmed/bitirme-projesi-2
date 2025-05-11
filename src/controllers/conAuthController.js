@@ -30,10 +30,10 @@ module.exports.signup_post = async (req, res)=>{
     console.log(req.file)
     
     const picture = req.file
-    const {name, email, password, experience, education, description} = req.body
+    const {name, email, password, experience, education, description,yearOfExperience} = req.body
 
     try{
-        const counselor = await Counselor.create({name, email, password, picture: req.file.filename , experience, education, description})
+        const counselor = await Counselor.create({name, email, password, picture: req.file.filename , experience, education, description,yearOfExperience})
         const token = createToken(counselor._id)
         res.cookie('jwt', token, {httpOnly: true, maxAge: maxAge * 1000} )
         res.status(201).json({counselor:counselor._id})

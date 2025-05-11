@@ -13,7 +13,7 @@ const sessionSchema = new mongoose.Schema({
          
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'User', // Refers to the "User" model
-        required:true
+        
     },
     counselor:{
         type: mongoose.Schema.Types.ObjectId, 
@@ -26,10 +26,19 @@ const sessionSchema = new mongoose.Schema({
     },
     completed:{
         type:Boolean,
-        required:true,
+        
         default:false
     }
 }) 
+//price - taken:bool - 
+sessionSchema.add({
+    price:{
+        type:Number,
+        required:true,
+        default:500
+    }
+
+})
 
 const Session = mongoose.model('session',sessionSchema)
 module.exports =Session

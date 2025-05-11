@@ -2,32 +2,34 @@ const form = document.querySelector('form')
 
 
 //editing the profile (not completed yet)
-form.addEventListener('submit', async(e)=>{
-    //e.preventDefault() 
-    //get the values
-    const name = form.name1.value
-    const picture = form.pic.value
-    const bio = form.bio.value
-    console.log(name)
-    
-    try{
-        const res = await fetch('/profile',{
-            method:"PUT",
-            body:JSON.stringify({name, picture, bio}),
+form.addEventListener("submit", async (e) => {
+    //e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('name', form.name1.value);
+    formData.append('picture', form.picture.files[0]); // use files[0], not value
+    formData.append('bio', form.bio.value);
+
+    try {
+        const res = await fetch('/profile', {
+            method: "PUT",
+            body: formData,
             headers: {
-                'Authorization': 'token',
-                'Content-Type':'application/json'
+                'Authorization': 'token'
+                // DON'T set 'Content-Type' here — browser will set it to multipart/form-data automatically with boundary
             }
+        });
 
-        })
+        const result = await res.json();
+        console.log(result);
+        alert("Profilin güncellendi")
         
 
-        
-    }catch(err){
-        console.log(err)
+    } catch (err) {
+        console.log(err);
     }
+});
 
-})
 
 window.addEventListener('pageshow', function(event) {
     if (event.persisted) {

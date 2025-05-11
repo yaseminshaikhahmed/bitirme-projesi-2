@@ -14,9 +14,10 @@
      <!-- navbar -->
         <div class="flex-row justify-end m-4">
      <select class="form-select width-20"  aria-label="Default select example">
-        <option selected value="0">Anasayfa</option>
-        <option value="1">Profile</option>
-        <option value="3" id="logout">Log out</option>
+        <option selected value="0">Randevular</option>
+        <option value="1">Mesajler</option>
+        <option value="3">Geri Bildirim</option>
+        <option value="4" id="logout">Log out</option>
       </select>
     </div>
 
@@ -26,24 +27,176 @@
        <h2>Hoş geldiniz, <span id="name"><%= counselor.name %></span>!</h2>
 
        <!-- Navigating -->
-        <div class="flex-row mt-5">
+        <!-- <div class="flex-row mt-5">
             <button id="appointments" class="border-left p-4 n ps-5" onclick="changeBg(this.id); changeApp()">Randevular</button>
             <button id="messages" class="pe-5 ps-5 border-line" onclick="changeBg(this.id); changeMess()">Mesajlar</button>
             <button id="feedback" class="border-right p-4 n pe-5" onclick="changeBg(this.id); changeFeed()">Geri Bildirim</button>
-        </div>
+        </div> -->
         <!-- /Navigationg -->
 
         <!--Body  -->
         <div id="body" class="flex-col">
  
+                <!--Body  -->
+        <div class="flex-col">
+            <div class="flex-row justify-center"><h3 class="ms-5 mt-5 mb-3">Randevu Talepleri</h3></div>
+            <!-- Requests -->
+             <div class="flex-row wrap justify-center">
+                <!-- request -->
+                <div class="flex-col border">
+                    <div class="flex-row ps-3 pt-3">
+                        <p class=" pe-2">Tarih:</p>
+                        <p class=" pe-3">01.05.2025</p>
+                    </div>
+                    <div class="flex-row ps-3">
+                        <p class=" pe-2">Zaman:</p>
+                        <p class=" pe-3">20:00</p>
+                    </div>
+                    <div class="flex-row ps-3">
+                        <p class=" pe-2">Müşteri:</p>
+                        <p class=" pe-3">Cana G.</p>
+                    </div>
+                    <div class="flex-row ps-3">
+                        <p class=" pe-2">Süre:</p>
+                        <p class=" pe-3">45 dk</p>
+                    </div>
+                    
+                    <div class="flex-row justify-end me-3 m-3">
+                        <button class="btn btn-outline-danger me-2">Reddet</button>
+                        <button class="btn btn-outline-success">Kabul et</button>
+                    </div>
+                    
+                    
+                    
+                    
+                </div>
+                <!-- /request -->
+             </div>
+             <!-- /Requests -->
+            <div class="flex-row justify-center"><h3 class="ms-5 mt-5 mb-3">Müsait Tarihler</h3></div>
             
+                <!-- Available dates -->
+            <div class="flex-row wrap ms-5 justify-evenly">
+
+                <!-- date -->
+                    <% for(let i = 0 ; i < availApps.length ; ++i){ %>
+                        <div class="flex-col border p-4">
+                            <div class="flex-row">
+                                <p class="pe-2">Tarih:</p>
+                                <p><%= availApps[i].date %></p>
+                            </div>
+                            <div class="flex-row">
+                                <p class="pe-2">Saat:</p>
+                                <p><%= availApps[i].time %></p>
+                            </div>
+                            <div class="flex-row">
+                                <p class="pe-2">Fiyat:</p>
+                                <p><%= availApps[i].price %> <span>TL</span></p>
+                            </div>
+                            <div class="flex-row">
+                                <p class="pe-2">Süre:</p>
+                                <p><%= availApps[i].duration %> <span>DK</span></p>
+                            </div>
+                            <div class="flex-row justify-end"><i class="bi bi-trash3 pointer"></i></div>
+                        </div>
+                        
+                        
+                      
+
+
+
+                    <%}%>
+                
+                </div>
+                <!-- btn -->
+                <div class="edit flex-row justify-center" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
+                    <button class="btn btn2 mt-5">Yeni ekle</button>
+                </div>
+            
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Yeni tarih ekle</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <form>
+                            <div class="mb-3">
+                              <label for="recipient-name" class="col-form-label">Tarih:</label>
+                              <input type="date" class="form-control" name="date">
+                            </div>
+                            <div class="mb-3">
+                              <label for="recipient-name" class="col-form-label">Saat:</label>
+                              <input type="text" class="form-control" id="recipient-name" name="time">
+                            </div>
+                            <div class="mb-3">
+                              <label for="message-text" class="col-form-label">Fiyat:</label>
+                              <input type="text" class="form-control" placeholder="TL" name="price">
+                            </div>
+                            <div class="mb-3">
+                              <label for="message-text" class="col-form-label">Süre:</label>
+                              <input type="text" class="form-control" placeholder="DK" name="duration">
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                              <button class="btn btn-primary" type="submit">Kaydet</button>
+                            </div>
+                          </form>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+                 <!-- /Modal -->
+        
+            <div class="flex-row justify-center"><h3 class="ms-5 mt-5 mb-3">Gelecek Randevular</h3></div>
+            <!-- appointments -->
+             <div class="flex-row wrap ms-5 justify-evenly">
+            <!-- Appointment -->
+            <div class="flex-col border">
+                <div class="flex-row ps-3 pt-3">
+                    <p class=" pe-2">Tarih:</p>
+                    <p class=" pe-3">01.05.2025</p>
+                </div>
+                <div class="flex-row ps-3">
+                    <p class=" pe-2">Zaman:</p>
+                    <p class=" pe-3">20:00</p>
+                </div>
+                <div class="flex-row ps-3">
+                    <p class=" pe-2">Müşteri:</p>
+                    <p class=" pe-3">Cana G.</p>
+                </div>
+                <div class="flex-row ps-3">
+                    <p class=" pe-2">Süre:</p>
+                    <p class=" pe-3">45 dk</p>
+                </div>
+                <div class="flex-row ps-3">
+                    <p class=" pe-2">Bilgi:</p>
+                    <p class=" pe-3">depresyondan acı çekiyor</p>
+                </div>
+                <div class="flex-row justify-end me-3"><i class="bi bi-trash3"></i></div>
+                
+                
+                
+                
+            </div>
+            <!-- /Appointment -->
+            
+        </div>
+        </div>
+        </div>
+
+        <!-- /Body -->
         </div>
 
         <!-- /Body -->
         
     </div>
 
-    <script src="./js/calendar.js"></script>
+    <!-- <script src="./js/calendar.js"></script> -->
+    <!-- <script src="./js/bootstrap.bundle.min.js"></script> -->
     <script src="./js/counselor-homepage.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -40,6 +40,26 @@ const counselorSchema = new mongoose.Schema({
 
 })
 
+counselorSchema.add({
+    rating:{
+        type:Number,
+        max:5,
+        default:5,
+    },
+    clients:{
+        type:Number,
+        defualt:0
+    }
+})
+
+counselorSchema.add({
+    yearOfExperience:{
+        type:Number,
+        required:true
+    }
+
+})
+
 //fire a function after doc saved to db - mongoose hooks
 counselorSchema.post('save', function(doc, next){
     console.log('new counselor was created & saved', doc)

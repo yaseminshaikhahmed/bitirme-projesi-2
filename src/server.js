@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const path = require('path')
 
 
 //const path = require('path');
@@ -8,6 +9,7 @@ const  cAuthRoutes= require('./routes/conAuthRoutes')
 const profileRoutes = require('./routes/profileRoutes')
 const homepageRoutes = require('./routes/homepageRoutes')
 const conHomepageRoutes = require('./routes/conHomepageRoutes')
+const appRoutes = require('./routes/appRoutes')
 
 
 
@@ -28,6 +30,8 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'));
 app.use(express.json())
 app.use(cookieParser())
+app.use('/images', express.static(path.join(__dirname, 'public/images')));
+
 
 // Connect to MongoDB and start the server
 mongoose.connect(dbURL)
@@ -55,6 +59,10 @@ app.get('/book-appointment',(req, res)=>{
     res.render('../public/views/book-appointment')
 })
 
+// app.get('/counselors',(req, res)=>{
+//     res.render('../public/views/counselor-page')
+// })
+
 
 //Middleware
 app.use(authRoutes)
@@ -62,6 +70,7 @@ app.use(profileRoutes)
 app.use(homepageRoutes)
 app.use(cAuthRoutes)
 app.use(conHomepageRoutes)
+app.use(appRoutes)
 
 
 

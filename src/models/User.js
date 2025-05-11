@@ -36,8 +36,7 @@ userSchema.add({
 
 userSchema.add({
     picture:{
-        data: Buffer,
-        contentType: String
+        type:String
     }
 })
 
