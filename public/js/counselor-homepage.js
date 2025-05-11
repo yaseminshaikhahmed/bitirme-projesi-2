@@ -1,41 +1,38 @@
 
-let body = document.getElementById('body')
+//Let the counselor add available dates manually
+const form = document.getElementById("avail-form")
+form.addEventListener('submit',async(e)=>{
+    try{
+    const date = form.date.value
+    const time = form.time.value
+    const price = form.price.value
+    const duration = form.duration.value
+    const res = await fetch('/counselor-homepage',{
+        method:"POST",
+        body:JSON.stringify({date, time, price, duration}),
+        headers: {'Content-Type':'application/json'}
 
-// buttons
-const appointments = document.getElementById('appointments')
-const messages = document.getElementById('messages')
-const feedback = document.getElementById('feedback')
-//set the default color of the first button
-appointments.style.background = 'gray' 
-appointments.style.color = 'white'
+    })
 
-//Change the background color of each buttons of the navigation bar
-function changeBg(id){
-    const clicked = document.getElementById(id)
-    appointments.style.background = 'rgb(241,240,241)' 
-    appointments.style.color = 'black'
-    messages.style.background = 'rgb(241,240,241)' 
-    messages.style.color = 'black'
-    feedback.style.background = 'rgb(241,240,241)' 
-    feedback.style.color = 'black'
-
-    clicked.style.background = 'gray' 
-    clicked.style.color = 'white'
+    }
+    catch(err){
     
-    
+    }
+})
+
+async function deleteDate(id){
+    console.log(id)
+    try{
+        const res = fetch('/counselor-homepage',{
+            method:'DELETE',
+            headers:{"content-type":"application/json"}
+
+        })
+        alert("Date was deleted")
+    }catch(err){
+        console.log(err.message)
+    }
 }
-//change the appointments content
-function changeApp(){
-
-    body.innerHTML = ''
-    body.innerHTML = `
-
-    `
-
-
-
-}
-
 function changeMess(){
      body.innerHTML = ''
      body.innerHTML = `

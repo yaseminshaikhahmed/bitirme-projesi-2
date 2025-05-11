@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/counselor-profile.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/btn.css">
+    <link rel="stylesheet" href="../css/counselor-profile.css">
     <!-- <link rel="stylesheet" href="index.css"> -->
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <title>Counsoler's profile</title>
 </head>
 <body>
@@ -16,25 +17,21 @@
                 <!--/navbar-->
     <!--main-->
     <div class="flex-row border m-5 rounded ">
-        <img src="pic7.jpg" alt="" class="therapist rounded m-4">
+        <img src="../images/<%= counselor.picture %>" alt="" class="therapist rounded m-4">
         <!--description and button-->
-        <div class="flex-col m-4">
+        <div class="flex-col m-4 w-100">
             <div>
-                <h4>Ahmet Yılmaz</h4>
-                <div> Uzmanlık Alanları: Anksiyete, Stres Yönetimi, Bilişsel Davranışçı Terapi (BDT)</div>
+                <h4><%= counselor.name %></h4>
+                <div> <%= counselor.experience %></div>
 
                     <h5>Eğitim:</h5>
-                     <div>Boğaziçi Üniversitesi – Psikoloji Lisans
-                     Koç Üniversitesi – Klinik Psikoloji Yüksek Lisans
-                     Harvard University – Kısa Dönem Stres Yönetimi Eğitimi</div>
+                     <div><%= counselor.education %></div>
                     
                     <h5>Deneyim:</h5>
-                     <div>10+ Yıllık Deneyim – Ruh sağlığı alanında bireysel ve grup terapileri yürütmektedir.
-                     Devlet ve Özel Klinik Deneyimi – İstanbul’da çeşitli hastanelerde ve özel psikoloji kliniklerinde çalışmıştır.
-                     Online ve Yüz Yüze Görüşme – Danışanlarına hem online hem de yüz yüze terapi hizmeti sunmaktadır.</div>
+                     <div><%= counselor.description %></div>
             </div>
-            <div class="flex-row justify-end">
-                <button class="btn mt-3">Randevu Al</button>
+            <div class="flex-row justify-end w-100">
+                <button class="btn btn2 mt-3" onclick="window.location.href='<%= counselor._id %>/book'">Randevu Al</button>
             </div>
 
         </div>

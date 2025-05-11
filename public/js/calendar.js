@@ -131,4 +131,8 @@ function getWeekDays(month, year) {
   
   
 }
-setCal(3, 2025)
+
+var date = new Date()
+var month = date.getMonth()
+var year = date.getFullYear()
+setCal(month, year)

@@ -97,7 +97,7 @@
                                 <p class="pe-2">Süre:</p>
                                 <p><%= availApps[i].duration %> <span>DK</span></p>
                             </div>
-                            <div class="flex-row justify-end"><i class="bi bi-trash3 pointer"></i></div>
+                            <div class="flex-row justify-end"><i class="bi bi-trash3 pointer" onclick="deleteDate( '<%= availApps[i]._id %>' )"></i></div>
                         </div>
                         
                         
@@ -121,7 +121,7 @@
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                          <form>
+                          <form id="avail-form">
                             <div class="mb-3">
                               <label for="recipient-name" class="col-form-label">Tarih:</label>
                               <input type="date" class="form-control" name="date">

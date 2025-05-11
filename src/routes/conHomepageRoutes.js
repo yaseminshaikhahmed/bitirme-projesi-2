@@ -7,6 +7,6 @@ router.get('/counselor-homepage', checkCounselor ,requireAuth,getCounselor, home
 //Get available dates
 router.post('/counselor-homepage',checkCounselor, requireAuth, getCounselor, homepageController.avail_post)
 
-// router.delete('/counselor-homepage',checkCounselor, requireAuth, homepageController.homepage_delete)
+router.delete('/counselor-homepage',checkCounselor, requireAuth, homepageController.homepage_delete)
 
 module.exports = router

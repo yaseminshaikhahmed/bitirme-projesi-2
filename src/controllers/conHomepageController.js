@@ -4,7 +4,7 @@ const Session = require('../models/Session')
 module.exports.homepage_get =async (req, res)=>{
     try{
         const availApps = await avail_get(req,res)
-        console.log(availApps)
+        //console.log(availApps)
         res.render('../public/views/counselor-homepage',{
             availApps:availApps
         })
@@ -25,6 +25,17 @@ async function avail_get(req, res){
     }catch(err){
         console.log(err.message)
         res.status(500).json({message:"Can't get availabe dates"})
+    }
+}
+//Delete available dates 
+module.exports.homepage_delete = async(req, res)=>{
+    try{
+        const deletedApp = await Session.deleteOne(Session._id)
+        res.status(203).JSON({message:"date was deleted"})
+
+    }catch(err){
+        console.log(err.message)
+        res.status(500).JSON({message:err.message})
     }
 }
 

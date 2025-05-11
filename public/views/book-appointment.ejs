@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/calendar.css">
-    <link rel="stylesheet" href="./css/btn.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/calendar.css">
+    <link rel="stylesheet" href="../css/btn.css">
 
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font/bootstrap-icons.css">
 
     <title>Document</title>
 
@@ -17,7 +17,7 @@
     <div id="main" class="flex-row justify-center">
     <%- include('calendar') %>
     <!-- Send the counselor a message -->
-     <div class="m-5 flex-col">
+     <!-- <div class="m-5 flex-col">
         <h2>
             Danışmana bir mesaj gönder
         </h2>
@@ -26,7 +26,16 @@
         <div class="flex-row justify-end">
             <button class="btn mt-5">Gönder</button>
         </div>
+     </div> -->
+     <div class="flex-col">
+        <div class="flex-row mt-5 justify-center">
+            <img src="../images/<%=counselor.picture%>" alt="" class="therapist rounded">
+            <h3 class="mt-5 ms-5"><%=counselor.name%></h3>
+        </div>
+    
+
      </div>
+     <!-- /Send the counselor a message -->
 
 </div>
 <!-- Appointments Dates -->
@@ -39,7 +48,7 @@
 <!-- Book an appointment button -->
 <div class="flex-row justify-center mt-4"><button class="btn">Randevu al</button></div>
 
-    <script src="./js/calendar.js"></script>
+    <script src="../js/calendar.js"></script>
     
 </body>
 </html>

@@ -6,6 +6,7 @@
     <title>Counselors</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/btn.css">
     <link rel="stylesheet" href="../css/counselors.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -52,7 +53,7 @@
             <!-- /Header-->
 
             <!--Counselors-->
-         <div class="wrap flex-row align-center ms-5" id="counselors">
+         <div class="wrap flex-row align-center ms-5 mt-4 mb-4" id="counselors">
 
             
             
@@ -64,7 +65,7 @@
                 <div class="card border flex-col me-5 p-4 justify-center align-center">
                     <img src="/images/<%= allCounselors[i].picture %>" alt="" class=" therapist">
                     <h3>Dr.<%= allCounselors[i].name %></h3>
-                    <p class="text-center"></p>
+                    <p class="text-center"><%= allCounselors[i].experience %></p>
                     <p class="text-center">Deneyim: <%= allCounselors[i].yearOfExperience %> Yıl</p>
                     <div class="rating">
                         <span class="fa fa-star checked"></span>
@@ -73,7 +74,7 @@
                         <span class="fa fa-star"></span>
                         <span class="fa fa-star"></span>
                     </div>
-                    <button class="btn">Randevu Al</button>
+                    <button class="btn btn2 mt-3" onclick="window.location.href='/<%= allCounselors[i]._id %>'">Daha fazla</button>
                 </div>
             
             <% } %>
