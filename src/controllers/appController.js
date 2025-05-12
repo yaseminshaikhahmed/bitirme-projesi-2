@@ -1,5 +1,6 @@
 const Counselor = require('../models/Counselor')
 const Session = require('../models/Session')
+const mongoose = require('mongoose')
 
 module.exports.counselors_get = async(req, res)=>{
     try{
@@ -34,10 +35,12 @@ module.exports.counselor_get = async(req, res)=>{
 
 module.exports.appointment_get = async(req,res)=>{
     try{
-        const counselorId = req.params.id
+        let counselorId = req.params.id
+        counselorId = new mongoose.Types.ObjectId(counselorId)
+        
         const counselor = await Counselor.findById(counselorId)
         const appointments = await Session.find({counselor:counselorId})
-        console.log("appController.js " + appointments)
+        //console.log("appController.js " + appointments)
         res.render('../public/views/book-appointment',{
             counselor:counselor,
             appointments:appointments

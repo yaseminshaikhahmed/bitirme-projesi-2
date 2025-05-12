@@ -30,25 +30,34 @@
      <div class="flex-col">
         <div class="flex-row mt-5 justify-center">
             <img src="../images/<%=counselor.picture%>" alt="" class="therapist rounded">
-            <h3 class="mt-5 ms-5"><%=counselor.name%></h3>
+            <div class="flex-col justify-center">
+                <h3 class="mt-5 ms-5"><%=counselor.name%></h3>
+                <p class="w-30 ms-5"><%=counselor.experience%></p>
+            </div>
+            
         </div>
-    
+        <h5 class="ms-5 mt-5">Lütfen bir tarih seç</h5>
+        
 
      </div>
      <!-- /Send the counselor a message -->
 
 </div>
 <!-- Appointments Dates -->
- <div class="flex-row justify-center">
-    <div class="border m-5 p-3 rounded date-width text-center clicked">15:00</div>
+ <div class="flex-row justify-center" id="hours">
+    <!-- <div class="border m-5 p-3 rounded date-width text-center clicked">15:00</div>
     <div class="border m-5 p-3 rounded date-width text-center">14:00</div>
     <div class="border m-5 p-3 rounded date-width text-center">17:30</div>
-    <div class="border m-5 p-3 rounded date-width text-center">20:00</div>
+    <div class="border m-5 p-3 rounded date-width text-center">20:00</div> -->
  </div>
 <!-- Book an appointment button -->
 <div class="flex-row justify-center mt-4"><button class="btn">Randevu al</button></div>
 
-    <script src="../js/calendar.js"></script>
     
+    <script id="appointments-data" type="application/json">
+        <%- JSON.stringify(appointments) %>
+        
+    </script>
+    <script src="../js/calendar.js" defer></script>
 </body>
 </html>
