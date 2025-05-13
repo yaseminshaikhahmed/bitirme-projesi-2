@@ -44,3 +44,13 @@ table{
 .w-30{
     width: 30%;
 }
+
+.hour.active{
+    background: red !important;
+    
+
+}
+.hour:hover{
+    background-color: #68b9b6;
+    color: white;
+}

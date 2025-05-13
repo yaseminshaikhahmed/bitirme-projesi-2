@@ -36,7 +36,10 @@
             </div>
             
         </div>
-        <h5 class="ms-5 mt-5">Lütfen bir tarih seç</h5>
+        <h5 class="ms-5 mt-5" id="order">Lütfen bir tarih seç</h5>
+        <div class="flex-col border p-3 mt-3" id="info">
+
+        </div>
         
 
      </div>
@@ -51,11 +54,15 @@
     <div class="border m-5 p-3 rounded date-width text-center">20:00</div> -->
  </div>
 <!-- Book an appointment button -->
-<div class="flex-row justify-center mt-4"><button class="btn">Randevu al</button></div>
+<div class="flex-row justify-center mt-4"><button class="btn" type="submit" id="book">Randevu al</button></div>
 
     
     <script id="appointments-data" type="application/json">
         <%- JSON.stringify(appointments) %>
+        
+    </script>
+    <script id="appointment-data" type="application/json">
+        <%- JSON.stringify(appointment) %>
         
     </script>
     <script src="../js/calendar.js" defer></script>

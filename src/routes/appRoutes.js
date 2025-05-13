@@ -11,6 +11,7 @@ router.get('/counselors',requireAuth, checkUser, appController.counselors_get)
 //display a specific counselor
 router.get('/:id',requireAuth, checkUser, appController.counselor_get)
 router.get('/:id/book',requireAuth, checkUser, appController.appointment_get)
+//router.get('/:id/book',requireAuth, checkUser, appController.info_get)
 
 
 

@@ -22,6 +22,9 @@ const turkishMonths = [
 let appointments = document.getElementById('appointments-data')
     appointments = JSON.parse(appointments.textContent);
 
+
+document.getElementById('info').style.display = "none"
+
 function getDaysInMonth(month, year) {
     var date = new Date(year, month, 1);
     var days = [];
@@ -87,6 +90,7 @@ function getWeekDays(month, year) {
     }
 
    daysInMonth.sort()
+   dates.sort()
     let t = 0
 
     for(let date of dates){
@@ -135,6 +139,7 @@ function getWeekDays(month, year) {
     monthValue = 12
     year = year - 1
   }
+  hide()
   
   setCal(Number(monthValue) - 1, Number(year))
   }
@@ -159,6 +164,7 @@ function getWeekDays(month, year) {
     console.log("year inside the for loop= " + year)
 
   }
+  hide()
 
   setCal(Number(monthValue) + 1, Number(year))
   
@@ -194,18 +200,91 @@ function extract(str){
 }
 
 function showHours(date){
-  console.log(date)
+  //console.log(date)
+  hideInfo()
   document.getElementById('hours').innerHTML  = ""
   for(let i = 0 ; i < appointments.length ; ++i){
     if(date.localeCompare(appointments[i].date) === 0){ //if these strings are equale
       document.getElementById('hours').innerHTML +=`
-      <div class="border m-5 p-3 rounded date-width text-center hour">${appointments[i].time}</div>
+      <div class="border m-5 p-3 rounded date-width text-center hour pointer" onclick="showInfo('${appointments[i]._id}')">${appointments[i].time}</div>
     
       
-      `
-
-
-    }
+      `}
   }
 }
+
+async function showInfo(id){
+  //make a request to get information, check the book route
+  //console.log(id)
+
+    const div = document.querySelector('.hour');
+
+// Add click effect
+
+  div.classList.add('active');
+
+
+// Remove effect when clicking outside
+document.addEventListener('click', (e) => {
+  if (!div.contains(e.target)) {  // If click is outside the div
+    div.classList.remove('active');
+  }
+});
+  
+
+  try{
+    let app = {}
+
+ const res = await fetch(`/${appointments[0].counselor}/book?app_id=${id}`, {
+      headers: {
+      'Accept': 'application/json'
+      }
+      })
+  .then(res =>  res.json())
+  .then(data => {
+    
+    app = data.appointment
+    console.log(app.date);
+  })
+  .catch(err => console.error(err))
+    console.log(app)
+    document.getElementById('order').style.display = "none"
+    document.getElementById('info').style.display = "flex"
+    document.getElementById('info').innerHTML = `
+     <div class="flex-row">
+        <p class="pe-2">Tarih:</p>
+        <p>${app.date}</p>
+    </div>
+    <div class="flex-row">
+        <p class="pe-2">Saat:</p>
+        <p>${app.time}</p>
+    </div>
+    <div class="flex-row">
+        <p class="pe-2">Fiyat:</p>
+        <p class="pe-2">${app.price}<span class="ps-2">TL</span></p>
+    </div>
+    <div class="flex-row">
+        <p class="pe-2">Süre:</p>
+        <p class="pe-2">${app.duration}<span class="ps-2">DK</span></p>
+    </div>
+                            `
+  }catch(err){
+    alert("Can't get info " +  err.message)
+    console.log("Can't get info " +  err.message)
+
+  }
+
+
+}
+
+function hide(){
+  document.getElementById("hours").innerHTML = ""
+  document.getElementById('order').style.display = "block"
+  document.getElementById('info').style.display = "none"
+}
+function hideInfo(){
+  document.getElementById('order').style.display = "block"
+  document.getElementById('info').style.display = "none"
+}
+
 
