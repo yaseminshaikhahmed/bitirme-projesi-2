@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Seans Ödeme Sayfası</title>
+  <link rel="stylesheet" href="../css/paying.css">
+  <link rel="stylesheet" href="../css/btn.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+
+</head>
+<body>
+
+  <header>
+    <div class="flex-col">
+      <h1> Ödeme </h1>
+    <p>Güvenli ve hızlı ödeme</p>
+    </div>
+  </header>
+
+  <main class="border p-4 shadow">
+
+    <section>
+      <h2>Seans Bilgileri</h2>
+      <p><strong>Danışman:</strong> Psikolog <%= counselor.name %></p>
+      <p><strong>Tarih:</strong> <%= info.date %>, Saat <%= info.time %></p>
+      <p class="price"><strong>Ücret:</strong> <%= info.price %> TL</p>
+    </section>
+
+    <form id="paymentForm">
+      <section>
+        <h2>Ödeme Bilgileri</h2>
+        <label>Kart Sahibi Adı</label>
+        <input type="text" placeholder="Ad Soyad" required value="Yasemin Shaikh">
+
+        <label>Kart Numarası</label>
+        <input type="text" placeholder="**** **** **** ****" maxlength="19" required value="44445555666777">
+
+        <div class="row">
+          <div>
+            <label>Son Kullanma</label>
+            <input type="text" placeholder="AA/YY" maxlength="5" required value="12/29">
+          </div>
+          <div>
+            <label>CVV</label>
+            <input type="text" placeholder="***" maxlength="3" required value="666">
+          </div>
+        </div>
+
+
+
+      <div class="flex-row justify-center align-center mt-3"><button type="submit" class="btn btn2 width-20" onclick="window.location.href='/<%= info._id %>'">Ödemeyi Tamamla</button></div>
+    </form>
+
+  </main>
+
+
+
+  <script>
+    document.getElementById('paymentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert("Ödeme işlemi başarıyla tamamlandı!");
+      // Burada gerçek ödeme API'sine bağlanabilirsiniz.
+    });
+  </script>
+ 
+    
+
+</body>
+</html>

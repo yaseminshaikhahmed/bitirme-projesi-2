@@ -24,6 +24,22 @@ let appointments = document.getElementById('appointments-data')
 
 
 document.getElementById('info').style.display = "none"
+document.getElementById('btn').style.display = "none"
+
+function removeDuplicates(arr){
+  let temp = arr[0]
+  let newArr = []
+  newArr.push(temp)
+  for(let i = 1 ; i < arr.length ; ++i){
+    if(temp != arr[i]){
+      newArr.push(arr[i])
+      temp = arr[i]
+    }else{
+      temp = arr[i]
+    }
+  }
+  return newArr
+}
 
 function getDaysInMonth(month, year) {
     var date = new Date(year, month, 1);
@@ -74,8 +90,8 @@ function getWeekDays(month, year) {
 
 
     
-    const daysInMonth = []
-    const dates = []
+    let daysInMonth = []
+    let dates = []
 
 
     for(let i = 0 ; i < appointments.length ; ++i ){
@@ -91,10 +107,13 @@ function getWeekDays(month, year) {
 
    daysInMonth.sort()
    dates.sort()
+   daysInMonth = removeDuplicates(daysInMonth)
+   dates = removeDuplicates(dates)
+  
     let t = 0
 
-    for(let date of dates){
-      // console.log(date)
+    for(let date of daysInMonth){
+      //console.log(date)
       // console.log(typeof(date))
     }
 
@@ -103,11 +122,15 @@ function getWeekDays(month, year) {
         if(i%7 === 0  && i != 0){
             ++c
         }
+        // console.log(days[wd])
+        // console.log(daysInMonth[t])
+        // console.log("t = " + t)
         if(daysInMonth[t] == days[wd]){
           document.getElementsByClassName("tr-row")[c].innerHTML += `<td class=" pointer rounded" onclick="showHours('${dates[t]}')"> <div class="me-3 color p-2 rounded">${days[wd++]} </div></td>`
-          console.log(dates[t])
+          
           ++t
         }else{
+          
           document.getElementsByClassName("tr-row")[c].innerHTML += `<td class="p-2 pointer"> ${days[wd++]}</td>`
         }
         
@@ -201,35 +224,26 @@ function extract(str){
 
 function showHours(date){
   //console.log(date)
+  
   hideInfo()
   document.getElementById('hours').innerHTML  = ""
   for(let i = 0 ; i < appointments.length ; ++i){
     if(date.localeCompare(appointments[i].date) === 0){ //if these strings are equale
       document.getElementById('hours').innerHTML +=`
-      <div class="border m-5 p-3 rounded date-width text-center hour pointer" onclick="showInfo('${appointments[i]._id}')">${appointments[i].time}</div>
+      <div id="${appointments[i]._id}" class="border m-5 p-3 rounded date-width text-center hour pointer" onclick="showInfo('${appointments[i]._id}')">${appointments[i].time}</div>
     
       
       `}
   }
 }
 
+
+
 async function showInfo(id){
   //make a request to get information, check the book route
   //console.log(id)
 
-    const div = document.querySelector('.hour');
 
-// Add click effect
-
-  div.classList.add('active');
-
-
-// Remove effect when clicking outside
-document.addEventListener('click', (e) => {
-  if (!div.contains(e.target)) {  // If click is outside the div
-    div.classList.remove('active');
-  }
-});
   
 
   try{
@@ -248,6 +262,25 @@ document.addEventListener('click', (e) => {
   })
   .catch(err => console.error(err))
     console.log(app)
+
+//change the color 
+  const hour = document.getElementById(id)
+  hour.classList.add('active')
+
+  document.addEventListener('click', (e) => {
+  if (!hour.contains(e.target)) {
+    hour.classList.remove('active');
+  }
+})
+
+ const btn = document.getElementById('btn')
+ btn.style.display = "flex"
+ btn.addEventListener('click',async (e)=>{
+  console.log("Clicked")
+  window.location.href  = `/${id}/pay` 
+ })
+
+
     document.getElementById('order').style.display = "none"
     document.getElementById('info').style.display = "flex"
     document.getElementById('info').innerHTML = `

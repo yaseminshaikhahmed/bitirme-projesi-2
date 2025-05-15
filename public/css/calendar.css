@@ -46,11 +46,14 @@ table{
 }
 
 .hour.active{
-    background: red !important;
+    background-color: #68b9b6 !important
+    ;
+    
+    color:white;
     
 
 }
 .hour:hover{
-    background-color: #68b9b6;
+    background-color: #68b9b6 !important;
     color: white;
 }

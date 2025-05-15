@@ -80,3 +80,52 @@ module.exports.appointment_get = async (req, res) => {
     res.status(500).send('Server error');
   }
 };
+
+module.exports.appointment_send = async (req, res)=>{
+  try{
+    const user = req.user._id
+    const sessionId = req.query.app_id
+    console.log("hello")
+    const {} = req.body
+    const updatedSession = await Session.findByIdAndUpdate(
+      sessionId,
+      {user}
+      )
+      if(updatedSession){
+        console.log("Session updated")
+        res.status(200).send("message : Session updated")
+      }else{
+        res.status(400).send("Session not updated")
+      }
+  }catch(err){
+    console.log(err)
+  }
+}
+
+module.exports.get_pay = async(req, res) =>{
+  try{
+    const sessionId = req.params.s_id
+    
+    const SessionInfo = await Session.findById(sessionId)
+    //console.log(SessionInfo.counselor)
+    const counselor = await Counselor.findById(SessionInfo.counselor)
+    res.render('../public/views/paying',
+      {
+        info:SessionInfo,
+        counselor:counselor
+      }
+    )
+  }catch(err){
+    console.log(err.message)
+  }
+
+}
+
+module.exports.appointment_booked = async (req, res) =>{
+  try{
+    res.render('../public/views/after-paying')
+  }
+  catch(err){
+    console.log(err.message)
+  }
+}

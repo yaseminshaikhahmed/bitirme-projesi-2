@@ -11,7 +11,12 @@ router.get('/counselors',requireAuth, checkUser, appController.counselors_get)
 //display a specific counselor
 router.get('/:id',requireAuth, checkUser, appController.counselor_get)
 router.get('/:id/book',requireAuth, checkUser, appController.appointment_get)
-//router.get('/:id/book',requireAuth, checkUser, appController.info_get)
+//let the user send a request to the counselor
+router.patch('/:id/book',requireAuth, checkUser, getUser, appController.appointment_send)
+
+//paying page
+router.get('/:s_id/pay',requireAuth, checkUser, appController.get_pay)
+router.get('/:s_id',requireAuth, checkUser, appController.appointment_booked)
 
 
 

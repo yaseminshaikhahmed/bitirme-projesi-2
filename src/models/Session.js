@@ -40,5 +40,12 @@ sessionSchema.add({
 
 })
 
+sessionSchema.add({
+    accepted:{
+        type:Boolean,
+        default:false
+    }
+})
+
 const Session = mongoose.model('session',sessionSchema)
 module.exports =Session
