@@ -86,7 +86,7 @@ module.exports.appointment_send = async (req, res)=>{
     const user = req.user._id
     const sessionId = req.query.app_id
     console.log("hello")
-    const {} = req.body
+    //const {message} = req.body
     const updatedSession = await Session.findByIdAndUpdate(
       sessionId,
       {user}
@@ -95,7 +95,9 @@ module.exports.appointment_send = async (req, res)=>{
         console.log("Session updated")
         res.status(200).send("message : Session updated")
       }else{
-        res.status(400).send("Session not updated")
+        console.log(updatedSession)
+        res.status(400).send("Session not updated", updatedSession)
+        
       }
   }catch(err){
     console.log(err)
@@ -124,6 +126,15 @@ module.exports.get_pay = async(req, res) =>{
 module.exports.appointment_booked = async (req, res) =>{
   try{
     res.render('../public/views/after-paying')
+  }
+  catch(err){
+    console.log(err.message)
+  }
+}
+
+module.exports.get_apps = async (req, res)=>{
+  try{
+    res.render('../public/views/appointments')
   }
   catch(err){
     console.log(err.message)

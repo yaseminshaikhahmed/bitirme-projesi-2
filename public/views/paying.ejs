@@ -49,20 +49,30 @@
 
 
 
-      <div class="flex-row justify-center align-center mt-3"><button type="submit" class="btn btn2 width-20" onclick="window.location.href='/<%= info._id %>'">Ödemeyi Tamamla</button></div>
+      <div class="flex-row justify-center align-center mt-3">
+        <button type="button" class="btn btn2 width-20" id="book">
+        Ödemeyi Tamamla
+      </button>
+      </div>
     </form>
 
   </main>
 
 
 
-  <script>
+  <!-- <script>
     document.getElementById('paymentForm').addEventListener('submit', function(e) {
       e.preventDefault();
       alert("Ödeme işlemi başarıyla tamamlandı!");
       // Burada gerçek ödeme API'sine bağlanabilirsiniz.
     });
-  </script>
+  </script> -->
+
+  
+  <script id="info-data" type="application/json">
+      <%- JSON.stringify(info) %>
+    </script>
+    <script src="../js/paying.js"></script>
  
     
 

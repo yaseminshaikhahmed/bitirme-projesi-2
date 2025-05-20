@@ -10,6 +10,8 @@ const profileRoutes = require('./routes/profileRoutes')
 const homepageRoutes = require('./routes/homepageRoutes')
 const conHomepageRoutes = require('./routes/conHomepageRoutes')
 const appRoutes = require('./routes/appRoutes')
+const conAppRoutes = require('./routes/conAppRoutes')
+const messageRoutes = require('./routes/messageRoutes')
 
 
 
@@ -70,7 +72,11 @@ app.use(profileRoutes)
 app.use(homepageRoutes)
 app.use(cAuthRoutes)
 app.use(conHomepageRoutes)
+app.use(messageRoutes)
 app.use(appRoutes)
+app.use(conAppRoutes)
+
+
 
 
 

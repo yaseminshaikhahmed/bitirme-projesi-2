@@ -90,5 +90,6 @@ counselorSchema.statics.login = async function(email, password){
 
 //Creating the table in the data base
 
-const Counselor = mongoose.model('counselor', counselorSchema)
-module.exports = Counselor
+//const Counselor = mongoose.model('counselor', counselorSchema)
+//module.exports = Counselor
+module.exports = mongoose.models.counselor || mongoose.model('counselor', counselorSchema)

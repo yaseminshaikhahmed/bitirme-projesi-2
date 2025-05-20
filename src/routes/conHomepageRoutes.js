@@ -4,7 +4,7 @@ const { requireAuth, checkCounselor, getCounselor } = require('../middleware/cAu
 
 const router = Router()
 router.get('/counselor-homepage', checkCounselor ,requireAuth,getCounselor, homepageController.homepage_get)
-//Get available dates
+//Get available dates and requests 
 router.post('/counselor-homepage',checkCounselor, requireAuth, getCounselor, homepageController.avail_post)
 
 router.delete('/counselor-homepage',checkCounselor, requireAuth, homepageController.homepage_delete)

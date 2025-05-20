@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ödeme Tamamlandı</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/btn.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <title>Document</title>
 </head>
 <body>
-    <div class="flex-col align-center p-5">
-        <h1>Ödeme tamamlandı</h1>
-        <h3>Danışmana mesaj gönderebilirsiniz</h3>
-        <textarea name="" id=""></textarea>
-        <div class="flex-row ">
-            <button type="submit" class="btn btn2">Gönder</button>
-            <button>Randevularım</button>
-            <!-- onclick="window.location.href='/appointments'" -->
+    <div class="d-flex flex-column align-items-center p-5 text-center">
+        <h1 class="mb-3">Ödeme Tamamlandı</h1>
+        <h3 class="mb-4">Danışmana mesaj gönderebilirsiniz</h3>
+
+        <div class="w-75 mb-3">
+            <label for="message" class="visually-hidden">Mesajınız</label>
+            <textarea id="message" class="form-control" rows="4" placeholder="Mesajınızı buraya yazın..."></textarea>
         </div>
 
+        <div class="d-flex gap-2 justify-end w-75">
+            <!-- <button type="button" class="btn btn2" onclick="window.location.href='/appointments'">Randevularım</button> -->
+            <button type="submit" class="btn btn2">Gönder</button>
+        </div>
     </div>
-    
+
+    <!-- Optional: Bootstrap JS if needed -->
+    <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

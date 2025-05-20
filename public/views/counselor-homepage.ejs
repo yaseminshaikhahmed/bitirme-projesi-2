@@ -43,37 +43,44 @@
             <!-- Requests -->
              <div class="flex-row wrap justify-center">
                 <!-- request -->
+                 <% for(let i= 0 ; i < requestedApps.length ; i++){%>
                 <div class="flex-col border">
                     <div class="flex-row ps-3 pt-3">
                         <p class=" pe-2">Tarih:</p>
-                        <p class=" pe-3">01.05.2025</p>
+                        <p class=" pe-3"><%= requestedApps[i].date %></p>
                     </div>
                     <div class="flex-row ps-3">
-                        <p class=" pe-2">Zaman:</p>
-                        <p class=" pe-3">20:00</p>
+                        <p class=" pe-2">Saat:</p>
+                        <p class=" pe-3"><%= requestedApps[i].time %></p>
                     </div>
                     <div class="flex-row ps-3">
                         <p class=" pe-2">Müşteri:</p>
-                        <p class=" pe-3">Cana G.</p>
+                        <p class=" pe-3"><p><a href="#" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"><%= users[i].name %></a></p></p>
+                        
                     </div>
                     <div class="flex-row ps-3">
                         <p class=" pe-2">Süre:</p>
-                        <p class=" pe-3">45 dk</p>
+                        <p class=" pe-3"><%= requestedApps[i].duration %></p>
                     </div>
                     
                     <div class="flex-row justify-end me-3 m-3">
-                        <button class="btn btn-outline-danger me-2">Reddet</button>
-                        <button class="btn btn-outline-success">Kabul et</button>
+                        <button class="btn btn-outline-danger me-2" onclick="decline('<%= users[i]._id %>')">Reddet</button>
+                        <button class="btn btn-outline-success" onclick="accept('<%= users[i]._id %>')">Kabul et</button>
                     </div>
                     
                     
                     
                     
                 </div>
+                <% } %>
                 <!-- /request -->
              </div>
              <!-- /Requests -->
-            <div class="flex-row justify-center"><h3 class="ms-5 mt-5 mb-3">Müsait Tarihler</h3></div>
+            
+            
+            
+            
+             <div class="flex-row justify-center"><h3 class="ms-5 mt-5 mb-3">Müsait Tarihler</h3></div>
             
                 <!-- Available dates -->
             <div class="flex-row wrap ms-5 justify-evenly">
@@ -156,7 +163,7 @@
             <!-- Appointment -->
             <div class="flex-col border">
                 <div class="flex-row ps-3 pt-3">
-                    <p class=" pe-2">Tarih:</p>
+                    <p class=" pe-2">Tarih:</p>,
                     <p class=" pe-3">01.05.2025</p>
                 </div>
                 <div class="flex-row ps-3">
@@ -196,6 +203,12 @@
 
     <!-- <script src="./js/calendar.js"></script> -->
     <!-- <script src="./js/bootstrap.bundle.min.js"></script> -->
+     <script id="requested" type="application/json">
+        <%-JSON.stringify(requestedApps) %>
+     </script>
+     <script id="user" type="application/json">
+        <%-JSON.stringify(users) %>
+     </script>
     <script src="./js/counselor-homepage.js"></script>
     <script src="../js/bootstrap.bundle.min.js"></script>
 </body>

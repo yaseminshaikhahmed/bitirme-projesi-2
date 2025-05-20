@@ -47,5 +47,6 @@ sessionSchema.add({
     }
 })
 
-const Session = mongoose.model('session',sessionSchema)
-module.exports =Session
+//const Session = mongoose.model('session',sessionSchema)
+//module.exports =Session
+module.exports = mongoose.models.session || mongoose.model('session', sessionSchema)

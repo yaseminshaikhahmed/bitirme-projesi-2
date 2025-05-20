@@ -1,12 +1,24 @@
 const Session = require('../models/Session')
+const User = require('../models/User')
 
 
 module.exports.homepage_get =async (req, res)=>{
     try{
+        const counselorId = req.counselor._id
         const availApps = await avail_get(req,res)
-        //console.log(availApps)
+        const requestedApps = await requested_get(req,res)
+        let users = []
+        for(let i = 0 ; i < requestedApps.length ; ++i){
+            //console.log(requestedApps[i].user)
+            users[i] = await (getUser(requestedApps[i].user))
+        }
+        
+        //const user = await User.findById(requestedApps)
+        console.log(users)
         res.render('../public/views/counselor-homepage',{
-            availApps:availApps
+            availApps:availApps,
+            requestedApps:requestedApps,
+            users:users
         })
         
     }catch(err){
@@ -26,6 +38,36 @@ async function avail_get(req, res){
         console.log(err.message)
         res.status(500).json({message:"Can't get availabe dates"})
     }
+}
+async function requested_get(req, res){
+    try{
+        const counselorId = req.counselor._id
+        //console.log("counselorId: "+counselorId)
+        const requestedApps = await Session.find({counselor:counselorId,
+            user: { $ne: null }
+        })
+        
+        //console.log("Available appointments:"+availApps)
+        return requestedApps
+    }catch(err){
+        console.log(err.message)
+        res.status(500).json({message:"Can't get requested dates " + err.message})
+    }
+}
+
+async function getUser(userId){
+    try{
+        
+        const user = await User.findById(userId)
+        //console.log(user)
+        
+        //console.log("Available appointments:"+availApps)
+        return user
+    }catch(err){
+        console.log(err.message)
+        res.status(500).json({message:"Can't get user with requested dates " + err.message})
+    }
+    
 }
 //Delete available dates 
 module.exports.homepage_delete = async(req, res)=>{

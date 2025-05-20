@@ -274,11 +274,9 @@ async function showInfo(id){
 })
 
  const btn = document.getElementById('btn')
+
  btn.style.display = "flex"
- btn.addEventListener('click',async (e)=>{
-  console.log("Clicked")
-  window.location.href  = `/${id}/pay` 
- })
+
 
 
     document.getElementById('order').style.display = "none"
@@ -306,6 +304,30 @@ async function showInfo(id){
     console.log("Can't get info " +  err.message)
 
   }
+   const button = document.getElementById('book')
+   button.addEventListener('click',async (e)=>{
+//  try{
+//   const res = await fetch(`/${appointments[0].counselor}/book?app_id=${id}`,{
+//     method:'PATCH',
+//     //body:'',
+//     headers:{
+//       'content-type':'application/json'
+//     }
+//   })
+//   if(res){
+    //alert('randevu alindi')
+    window.location.href  = `/${id}/pay` 
+//   }
+//   else{
+//     alert('randevu alinmiyor')
+//   }
+  
+
+//  }catch(err){
+//   console.log(err.message)
+//  }
+  
+ })
 
 
 }
