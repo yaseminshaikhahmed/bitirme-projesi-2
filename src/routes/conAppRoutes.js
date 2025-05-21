@@ -7,9 +7,10 @@ const router = Router()
 //decline a request, send a notification to the user that the counselor has declined their request, use query 
 
 router.post('/counselor-homepage/decline', checkCounselor ,requireAuth,getCounselor, appController.request_decline)
+router.patch('/counselor-homepage/decline', checkCounselor ,requireAuth, appController.remove_user)
 
 //accept a request, change the appointment accepted property to 'true', then go to homepage get and display them
-//router.patch('/counselor-homepage/accept',checkCounselor, requireAuth, appController.request_accept)
+router.patch('/counselor-homepage/accept',checkCounselor, requireAuth, appController.request_accept)
 
 
 

@@ -44,7 +44,7 @@
              <div class="flex-row wrap justify-center">
                 <!-- request -->
                  <% for(let i= 0 ; i < requestedApps.length ; i++){%>
-                <div class="flex-col border">
+                <div class="flex-col border" id="c<%= i %>" >
                     <div class="flex-row ps-3 pt-3">
                         <p class=" pe-2">Tarih:</p>
                         <p class=" pe-3"><%= requestedApps[i].date %></p>
@@ -64,8 +64,8 @@
                     </div>
                     
                     <div class="flex-row justify-end me-3 m-3">
-                        <button class="btn btn-outline-danger me-2" onclick="decline('<%= users[i]._id %>')">Reddet</button>
-                        <button class="btn btn-outline-success" onclick="accept('<%= users[i]._id %>')">Kabul et</button>
+                        <button class="btn btn-outline-danger me-2" onclick="decline('<%= requestedApps[i]._id %>','<%= counselor.name %>','<%= i %>')">Reddet</button>
+                        <button class="btn btn-outline-success" onclick="accept('<%= requestedApps[i]._id %>')">Kabul et</button>
                     </div>
                     
                     

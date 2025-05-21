@@ -8,9 +8,11 @@ module.exports.homepage_get =async (req, res)=>{
         const availApps = await avail_get(req,res)
         const requestedApps = await requested_get(req,res)
         let users = []
+        
         for(let i = 0 ; i < requestedApps.length ; ++i){
             //console.log(requestedApps[i].user)
             users[i] = await (getUser(requestedApps[i].user))
+            
         }
         
         //const user = await User.findById(requestedApps)
@@ -69,6 +71,9 @@ async function getUser(userId){
     }
     
 }
+
+
+
 //Delete available dates 
 module.exports.homepage_delete = async(req, res)=>{
     try{

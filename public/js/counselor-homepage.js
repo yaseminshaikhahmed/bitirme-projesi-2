@@ -1,4 +1,15 @@
+const requestedApps = document.getElementById('requested')
+const reqApps = JSON.parse(requestedApps.textContent)
+const reqSize = reqApps.length
+function getNot(index){
+    const list =[
+        "Mesaj gönderdi",
+        "randuvunu onayladı",
+        "randuvunu reddetti"
+    ]
+    return list[index]
 
+}
 //Let the counselor add available dates manually
 const form = document.getElementById("avail-form")
 form.addEventListener('submit',async(e)=>{
@@ -22,6 +33,7 @@ form.addEventListener('submit',async(e)=>{
 
 
 
+
 async function deleteDate(id){
     console.log(id)
     try{
@@ -35,6 +47,77 @@ async function deleteDate(id){
         console.log(err.message)
     }
 }
+
+async function decline(id, name, i){
+    const d = new Date()
+    const year = d.getFullYear()
+    const month = d.getMonth()+1
+    const day = d.getDay()
+    const date = day + ":" + month + ":" + year
+    const hour = d.getHours()
+    const minutes = d.getMinutes()
+    const time = hour + ":" + minutes
+    
+    const c = 'c' + i
+    console.log("c = " + c )
+    const res = await deleteRequest(id)
+    document.getElementById(c).style.display = 'none'
+    try{
+        const content = name + " " + getNot(0)
+        const res = await fetch(`/counselor-homepage/decline?app=${id}`,{
+            method:'POST',
+            body:JSON.stringify({content, date, time}),
+            headers:{"content-type":"application/json"}
+        })
+        
+        
+        
+
+    }catch(err){
+        console.log(err.message)
+    }
+    
+}
+
+async function deleteRequest(id){
+    try{
+        
+        const res = await fetch(`/counselor-homepage/decline?app=${id}`,{
+            method:'PATCH',
+            
+            headers:{"content-type":"application/json"}
+        })
+        
+        
+        
+
+    }
+    catch(err){
+        console.log(err.message)
+    }
+
+}
+
+async function accept(id){
+     try{
+        
+        const res = await fetch(`/counselor-homepage/accept?app=${id}`,{
+            method:'PATCH',
+            
+            headers:{"content-type":"application/json"}
+        })
+        
+        
+        
+
+    }
+    catch(err){
+        console.log(err.message)
+    }
+} 
+
+
+
 function changeMess(){
      body.innerHTML = ''
      body.innerHTML = `
@@ -113,7 +196,7 @@ function changeFeed(){
 }
 
 //call changeApp when ever you first visit the page
-changeApp()
+//changeApp()
 
 
 
