@@ -13,7 +13,7 @@ function getNot(index){
 }
 
 module.exports.request_decline = async(req, res)=>{
-    console.log("hello")
+    //console.log("hello")
     const counselorId = req.counselor._id
     const {content, date, time} = req.body
     const appId = req.query.app 
@@ -57,6 +57,26 @@ module.exports.request_accept = async(req, res)=>{
             { _id: app },
             { $set: { accepted: true } }
         )
+        
+
+
+    }catch(err){
+        console.log(err.message)
+        res.status(400).send({message:err.message})
+    }
+
+}
+module.exports.request_cancel = async(req, res)=>{
+       const app = req.query.app 
+    try{
+        const cancelled = await Session.findByIdAndDelete(app)
+        if(cancelled){
+            res.status(200).send({message:"Session was cancelled"})
+        }
+        else{
+            res.status(405).send({message:"Session was not cancelled"})
+        }
+        
         
 
 

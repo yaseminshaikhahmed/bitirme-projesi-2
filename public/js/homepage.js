@@ -20,8 +20,26 @@ btn.addEventListener('change', async(e)=>{
             console.log("logout.js", err);
             alert("Can't go to profile page");
           }
+          
       btn.value = '0'
-}
+}else if(btn.value == '4'){
+  try {
+            const res = await fetch('/counselors');
+            
+            if (res.ok) {
+              location.assign('/counselors');
+            } else {
+              throw new Error('Unauthorized or failed to fetch counselors page');
+            }
+          
+          } catch (err) {
+            console.log("logout.js", err);
+            alert("Can't go to counselors page");
+          }
+          
+      btn.value = '0'
+            
+          }
 
 
 })

@@ -3,7 +3,7 @@ btn = document.querySelector('select')
 btn.addEventListener('change', async(e)=>{
     e.preventDefault() 
 
-    if(btn.value == '3'){ // if the user chooses to log out 
+    if(btn.value == '6'){ // if the user chooses to log out 
     try{
         
         const res = await fetch('/logout')

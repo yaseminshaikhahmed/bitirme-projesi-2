@@ -5,7 +5,8 @@ function getNot(index){
     const list =[
         "Mesaj gönderdi",
         "randuvunu onayladı",
-        "randuvunu reddetti"
+        "randuvunu reddetti",
+        "randuvunu iptal etti"
     ]
     return list[index]
 
@@ -63,12 +64,21 @@ async function decline(id, name, i){
     const res = await deleteRequest(id)
     document.getElementById(c).style.display = 'none'
     try{
-        const content = name + " " + getNot(0)
+
+        const content = name + " " + getNot(2)
+        console.log(content)
         const res = await fetch(`/counselor-homepage/decline?app=${id}`,{
             method:'POST',
             body:JSON.stringify({content, date, time}),
             headers:{"content-type":"application/json"}
         })
+        
+        if(res.ok){
+            alert("Rededildi")
+        }else{
+            alert("Error")
+        }
+        
         
         
         
@@ -98,7 +108,10 @@ async function deleteRequest(id){
 
 }
 
-async function accept(id){
+async function accept(id, i){
+    
+    const c = 'c' + i
+    document.getElementById(c).style.display = 'none'
      try{
         
         const res = await fetch(`/counselor-homepage/accept?app=${id}`,{
@@ -106,7 +119,8 @@ async function accept(id){
             
             headers:{"content-type":"application/json"}
         })
-        
+    
+    
         
         
 

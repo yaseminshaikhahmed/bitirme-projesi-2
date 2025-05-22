@@ -65,7 +65,7 @@
                     
                     <div class="flex-row justify-end me-3 m-3">
                         <button class="btn btn-outline-danger me-2" onclick="decline('<%= requestedApps[i]._id %>','<%= counselor.name %>','<%= i %>')">Reddet</button>
-                        <button class="btn btn-outline-success" onclick="accept('<%= requestedApps[i]._id %>')">Kabul et</button>
+                        <button class="btn btn-outline-success" onclick="accept('<%= requestedApps[i]._id %>','<%= i %>')">Kabul et</button>
                     </div>
                     
                     
@@ -160,34 +160,33 @@
             <div class="flex-row justify-center"><h3 class="ms-5 mt-5 mb-3">Gelecek Randevular</h3></div>
             <!-- appointments -->
              <div class="flex-row wrap ms-5 justify-evenly">
+                <% for(let i = 0; i < acceptedSessions.length ; ++i){ %>
             <!-- Appointment -->
             <div class="flex-col border">
                 <div class="flex-row ps-3 pt-3">
-                    <p class=" pe-2">Tarih:</p>,
-                    <p class=" pe-3">01.05.2025</p>
+                    <p class=" pe-2">Tarih:</p>
+                    <p class=" pe-3"><%= acceptedSessions[i].date %></p>
                 </div>
                 <div class="flex-row ps-3">
                     <p class=" pe-2">Zaman:</p>
-                    <p class=" pe-3">20:00</p>
+                    <p class=" pe-3"><%= acceptedSessions[i].time %></p>
                 </div>
                 <div class="flex-row ps-3">
                     <p class=" pe-2">Müşteri:</p>
-                    <p class=" pe-3">Cana G.</p>
+                    <p class=" pe-3"><%= acceptedSessions[i].user %></p>
                 </div>
                 <div class="flex-row ps-3">
                     <p class=" pe-2">Süre:</p>
-                    <p class=" pe-3">45 dk</p>
+                    <p class=" pe-3"><%= acceptedSessions[i].duration %></p>
                 </div>
-                <div class="flex-row ps-3">
-                    <p class=" pe-2">Bilgi:</p>
-                    <p class=" pe-3">depresyondan acı çekiyor</p>
-                </div>
-                <div class="flex-row justify-end me-3"><i class="bi bi-trash3"></i></div>
+                
+                <div class="flex-row justify-end me-3 pointer"><i class="bi bi-trash3" onclick="cancel('<%= acceptedSessions[i]._id %>')"></i></div>
                 
                 
                 
                 
             </div>
+            <% }%>
             <!-- /Appointment -->
             
         </div>
@@ -208,6 +207,9 @@
      </script>
      <script id="user" type="application/json">
         <%-JSON.stringify(users) %>
+     </script>
+     <script id="accepted" type="application/json">
+        <%-JSON.stringify(acceptedSessions) %>
      </script>
     <script src="./js/counselor-homepage.js"></script>
     <script src="../js/bootstrap.bundle.min.js"></script>

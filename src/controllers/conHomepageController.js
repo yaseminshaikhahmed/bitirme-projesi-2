@@ -8,6 +8,7 @@ module.exports.homepage_get =async (req, res)=>{
         const availApps = await avail_get(req,res)
         const requestedApps = await requested_get(req,res)
         let users = []
+        const acceptedSessions = await getAccepted(counselorId)
         
         for(let i = 0 ; i < requestedApps.length ; ++i){
             //console.log(requestedApps[i].user)
@@ -16,11 +17,12 @@ module.exports.homepage_get =async (req, res)=>{
         }
         
         //const user = await User.findById(requestedApps)
-        console.log(users)
+        console.log(acceptedSessions)
         res.render('../public/views/counselor-homepage',{
             availApps:availApps,
             requestedApps:requestedApps,
-            users:users
+            users:users,
+            acceptedSessions:acceptedSessions
         })
         
     }catch(err){
@@ -67,11 +69,25 @@ async function getUser(userId){
         return user
     }catch(err){
         console.log(err.message)
-        res.status(500).json({message:"Can't get user with requested dates " + err.message})
+        
     }
     
 }
 
+async function getAccepted(counselorId){
+    try{
+        const acceptedSessions = await Session.find({
+            counselor:counselorId,
+            accepted:'true'
+        })
+        //console.log(acceptedSessions)
+        return acceptedSessions
+    }
+    
+    catch(err){
+        console.log(err.message)
+    }
+}
 
 
 //Delete available dates 
