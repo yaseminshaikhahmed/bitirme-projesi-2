@@ -1,0 +1,18 @@
+nav{
+    background-color: white;
+}
+
+#navbarNavAltMarkup{
+    justify-content: right;
+    margin-right: 20vw;
+    font-size: 20px;
+    
+}
+img{
+    margin-left: 10vw;
+}
+
+.navbar, .navbar-expand-lg{
+    box-shadow: 5px 10px 20px #dfd7d7;
+    width: 100%;
+}

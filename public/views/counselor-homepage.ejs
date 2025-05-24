@@ -65,7 +65,7 @@
                     
                     <div class="flex-row justify-end me-3 m-3">
                         <button class="btn btn-outline-danger me-2" onclick="decline('<%= requestedApps[i]._id %>','<%= counselor.name %>','<%= i %>')">Reddet</button>
-                        <button class="btn btn-outline-success" onclick="accept('<%= requestedApps[i]._id %>','<%= i %>')">Kabul et</button>
+                        <button class="btn btn-outline-success" onclick="accept('<%= requestedApps[i]._id %>','<%= counselor.name %>','<%= i %>')">Kabul et</button>
                     </div>
                     
                     
@@ -135,15 +135,15 @@
                             </div>
                             <div class="mb-3">
                               <label for="recipient-name" class="col-form-label">Saat:</label>
-                              <input type="text" class="form-control" id="recipient-name" name="time">
+                              <input type="text" class="form-control" id="recipient-name" name="time" value="15:30">
                             </div>
                             <div class="mb-3">
                               <label for="message-text" class="col-form-label">Fiyat:</label>
-                              <input type="text" class="form-control" placeholder="TL" name="price">
+                              <input type="text" class="form-control" placeholder="TL" name="price" value="500">
                             </div>
                             <div class="mb-3">
                               <label for="message-text" class="col-form-label">Süre:</label>
-                              <input type="text" class="form-control" placeholder="DK" name="duration">
+                              <input type="text" class="form-control" placeholder="DK" name="duration" value="60">
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
@@ -162,7 +162,7 @@
              <div class="flex-row wrap ms-5 justify-evenly">
                 <% for(let i = 0; i < acceptedSessions.length ; ++i){ %>
             <!-- Appointment -->
-            <div class="flex-col border">
+            <div class="flex-col border" id="j<%= i %>">
                 <div class="flex-row ps-3 pt-3">
                     <p class=" pe-2">Tarih:</p>
                     <p class=" pe-3"><%= acceptedSessions[i].date %></p>
@@ -180,7 +180,7 @@
                     <p class=" pe-3"><%= acceptedSessions[i].duration %></p>
                 </div>
                 
-                <div class="flex-row justify-end me-3 pointer"><i class="bi bi-trash3" onclick="cancel('<%= acceptedSessions[i]._id %>')"></i></div>
+                <div class="flex-row justify-end me-3 pointer"><i class="bi bi-trash3" onclick="cancel('<%= acceptedSessions[i]._id %>','<%= counselor.name %>','<%= i %>')"></i></div>
                 
                 
                 

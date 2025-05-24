@@ -12,7 +12,7 @@ const sessionSchema = new mongoose.Schema({
     user:{ //get the user's id that took this session
          
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'User', // Refers to the "User" model
+        ref: 'User' // Refers to the "User" model
         
     },
     counselor:{
@@ -46,6 +46,19 @@ sessionSchema.add({
         default:false
     }
 })
+sessionSchema.add({
+    cancelled:{
+        type:Boolean,
+        default:false
+    }
+})
+sessionSchema.add({
+    taken:{
+        type:Boolean,
+        default:false
+    }
+})
+
 
 //const Session = mongoose.model('session',sessionSchema)
 //module.exports =Session

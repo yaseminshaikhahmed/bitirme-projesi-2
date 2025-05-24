@@ -10,6 +10,6 @@ const upload = require('../middleware/upload')
 router.post('/counselor-signup', upload.single('picture'), authController.signup_post)
 router.get('/counselor-login',  authController.login_get)
 router.post('/counselor-login', authController.login_post)
-router.get('/logout', authController.logout_get)
+router.get('/counselor-logout', authController.logout_get)
 
 module.exports = router

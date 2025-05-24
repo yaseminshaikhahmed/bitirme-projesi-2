@@ -1,8 +1,18 @@
 const Feeling = require('../models/Feeling')
+const Notification = require('../models/notification')
 
-module.exports.homepage_get = (req, res)=>{
-    res.render('../public/views/homepage')
+module.exports.homepage_get = async(req, res)=>{
+    const user = req.user._id
+    const notifications = await Notification.find({
+        user:user
+    })
+    
+    res.render('../public/views/homepage',{
+        notifications:notifications
+    })
 }
+
+//creating a feeling 
 
 module.exports.homepage_post = async (req, res) => {
     try {
@@ -39,3 +49,15 @@ module.exports.homepage_post = async (req, res) => {
         });
     }
 };
+
+module.exports.homepage_delete = async (req, res) =>{
+    const id = req.query.id// id of notification
+    try{
+        const deletedNot = await Notification.findByIdAndDelete(id)
+        
+
+    }
+    catch(err){
+
+    }
+}

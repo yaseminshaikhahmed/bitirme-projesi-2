@@ -3,11 +3,12 @@ const reqApps = JSON.parse(requestedApps.textContent)
 const reqSize = reqApps.length
 function getNot(index){
     const list =[
-        "Mesaj gönderdi",
-        "randuvunu onayladı",
-        "randuvunu reddetti",
-        "randuvunu iptal etti"
+        "Mesaj gönderdi",//0
+        "randuvunu onayladı",//1
+        "randuvunu reddetti",//2
+        "randuvunu iptal etti"//3
     ]
+    console.log(list[index])
     return list[index]
 
 }
@@ -49,86 +50,131 @@ async function deleteDate(id){
     }
 }
 
-async function decline(id, name, i){
+async function sendNot(id, name, message){
     const d = new Date()
     const year = d.getFullYear()
     const month = d.getMonth()+1
     const day = d.getDay()
-    const date = day + ":" + month + ":" + year
+    const date = day + "." + month + "." + year
     const hour = d.getHours()
     const minutes = d.getMinutes()
     const time = hour + ":" + minutes
     
-    const c = 'c' + i
-    console.log("c = " + c )
-    const res = await deleteRequest(id)
-    document.getElementById(c).style.display = 'none'
-    try{
+//     const c = 'c' + i
+//    // console.log("c = " + c )
+    
+//     document.getElementById(c).style.display = 'none'
 
-        const content = name + " " + getNot(2)
+
+        const content = name + " " + getNot(message)
         console.log(content)
-        const res = await fetch(`/counselor-homepage/decline?app=${id}`,{
+       return await fetch(`/counselor-homepage/send?app=${id}`,{
             method:'POST',
             body:JSON.stringify({content, date, time}),
             headers:{"content-type":"application/json"}
         })
+
+    
+}
+
+async function decline(id, name, i){
+    const message = 2
+    try {
+    const res2 = await sendNot(id, name, message)
+    const res = await  fetch(`/counselor-homepage/decline?app=${id}`, {
+            method: 'PATCH',
+            headers: { 'content-type': 'application/json' }
+        })
+    alert("Rededildi")
+} catch (err) {
+    console.log(err.message);
+}
+}
+
+
+async function accept(id, name, i) {
+    const message= 1
+    const c = 'c'+i
+    try{
+        const res = await fetch(`/counselor-homepage/accept?app=${id}`,{
+            method: 'PATCH',
+            headers: { 'content-type': 'application/json' }
+        })
+       
+        const res2 = await sendNot(id, name, message)
         
         if(res.ok){
-            alert("Rededildi")
+            
+
+            alert("onaylandi");
+            document.getElementById(c).style.display = 'none'
         }else{
-            alert("Error")
+            alert("onaylanmadi")
         }
-        
-        
-        
-        
+        if(res2.ok){
+            
 
-    }catch(err){
-        console.log(err.message)
+            alert("duyuru gonderildi");
+            document.getElementById(c).style.display = 'none'
+        }else{
+            alert("duyuru gonderilmedi")
+        }
     }
-    
+    catch(err){
+        alert(err.message)
+        console.log(err.message);
+    }
+    ///////////////////////////////////
+    // const message = 1;
+    // const c = 'c' + i;
+    // console.log(c)
+
+    // try {
+    //     const [res, res2] = await Promise.all([
+    //         fetch(`/counselor-homepage/accept?app=${id}`, {
+    //             method: 'PATCH',
+    //             headers: { 'content-type': 'application/json' }
+    //         }),
+    //         sendNot(id, name, message)
+    //     ]);
+
+    //     console.log("onaylandi");
+
+    //     if (res.ok && res2.ok) {
+    //         alert("onaylandi");
+    //         document.getElementById(c).style.display = 'none';
+    //     } else {
+    //         alert("Error");
+    //     }
+    // } catch (err) {
+    //     console.log(err.message);
+    // }
 }
 
-async function deleteRequest(id){
+async function cancel(id, name, i){
+    const message= 3
+    const j = 'j'+i
     try{
-        
-        const res = await fetch(`/counselor-homepage/decline?app=${id}`,{
-            method:'PATCH',
-            
-            headers:{"content-type":"application/json"}
+        const res = await fetch(`/counselor-homepage/cancel?app=${id}`,{
+            method: 'PATCH',
+            headers: { 'content-type': 'application/json' }
         })
+       
+        const res2 = await sendNot(id, name, message)
         
-        
-        
+        if(res.ok && res2.ok){
+            
 
+            alert("Seans iptal edildi ve kullanıcıya bir duyuru gönderildi")
+            document.getElementById(j).style.display = 'none'
+        }
     }
     catch(err){
-        console.log(err.message)
-    }
 
+    }
 }
+ 
 
-async function accept(id, i){
-    
-    const c = 'c' + i
-    document.getElementById(c).style.display = 'none'
-     try{
-        
-        const res = await fetch(`/counselor-homepage/accept?app=${id}`,{
-            method:'PATCH',
-            
-            headers:{"content-type":"application/json"}
-        })
-    
-    
-        
-        
-
-    }
-    catch(err){
-        console.log(err.message)
-    }
-} 
 
 
 

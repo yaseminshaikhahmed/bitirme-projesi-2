@@ -12,19 +12,25 @@ function getNot(index){
 
 }
 
-module.exports.request_decline = async(req, res)=>{
+module.exports.send_not = async(req, res)=>{
     //console.log("hello")
-    const counselorId = req.counselor._id
+    const counselor = req.counselor._id
     const {content, date, time} = req.body
     const appId = req.query.app 
     try{
         const app = await Session.findById(appId)
-        console.log(app)
+        
         const user = app.user
-        const counselor = app.counselor
+        //console.log(user)
         
         const not = await Notification.create({content, date, time, user, counselor})
-
+        if(not){
+            console.log("Notification was created")
+            res.status(200).send({message:"Notification was created"})
+        }else{
+            console.log("Notification was not created")
+            res.status(405).send({message:"Notification was not created"})
+        }
 
     }catch(err){
         console.log(err.message)
@@ -66,10 +72,15 @@ module.exports.request_accept = async(req, res)=>{
     }
 
 }
+
+// it should modify the session's cancelled propery  to true and then send a notification
+// to the user to notify them it was cancelled
 module.exports.request_cancel = async(req, res)=>{
        const app = req.query.app 
     try{
-        const cancelled = await Session.findByIdAndDelete(app)
+        const cancelled = await Session.findByIdAndUpdate(app,
+            {cancelled:true}
+        )
         if(cancelled){
             res.status(200).send({message:"Session was cancelled"})
         }

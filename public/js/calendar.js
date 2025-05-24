@@ -126,7 +126,7 @@ function getWeekDays(month, year) {
         // console.log(daysInMonth[t])
         // console.log("t = " + t)
         if(daysInMonth[t] == days[wd]){
-          document.getElementsByClassName("tr-row")[c].innerHTML += `<td class=" pointer rounded" onclick="showHours('${dates[t]}')"> <div class="me-3 color p-2 rounded">${days[wd++]} </div></td>`
+          document.getElementsByClassName("tr-row")[c].innerHTML += `<td class=" pointer rounded" onclick="showHours('${dates[t]}')"> <div class="me-3 mt-1 color p-2 rounded">${days[wd++]} </div></td>`
           
           ++t
         }else{

@@ -89,7 +89,8 @@ module.exports.appointment_send = async (req, res)=>{
     //const {message} = req.body
     const updatedSession = await Session.findByIdAndUpdate(
       sessionId,
-      {user}
+      {user, taken:true}
+      
       )
       if(updatedSession){
         console.log("Session updated")
