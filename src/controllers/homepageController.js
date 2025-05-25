@@ -58,6 +58,6 @@ module.exports.homepage_delete = async (req, res) =>{
 
     }
     catch(err){
-
+        res.status(505).send(err.message)
     }
 }

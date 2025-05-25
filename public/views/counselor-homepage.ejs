@@ -44,6 +44,7 @@
              <div class="flex-row wrap justify-center">
                 <!-- request -->
                  <% for(let i= 0 ; i < requestedApps.length ; i++){%>
+                    <% if(requestedApps[i].accepted == false && requestedApps[i].taken == true){ %>
                 <div class="flex-col border" id="c<%= i %>" >
                     <div class="flex-row ps-3 pt-3">
                         <p class=" pe-2">Tarih:</p>
@@ -55,7 +56,7 @@
                     </div>
                     <div class="flex-row ps-3">
                         <p class=" pe-2">Müşteri:</p>
-                        <p class=" pe-3"><p><a href="#" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"><%= users[i].name %></a></p></p>
+                        <p class=" pe-3"><p><a href="#" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"></a></p></p>
                         
                     </div>
                     <div class="flex-row ps-3">
@@ -73,6 +74,7 @@
                     
                 </div>
                 <% } %>
+                <% } %>
                 <!-- /request -->
              </div>
              <!-- /Requests -->
@@ -87,6 +89,7 @@
 
                 <!-- date -->
                     <% for(let i = 0 ; i < availApps.length ; ++i){ %>
+                        <% if(availApps[i].accepted == false && availApps[i].taken == false){ %>
                         <div class="flex-col border p-4">
                             <div class="flex-row">
                                 <p class="pe-2">Tarih:</p>
@@ -109,7 +112,7 @@
                         
                         
                       
-
+                        <%}%>
 
 
                     <%}%>
@@ -161,8 +164,9 @@
             <!-- appointments -->
              <div class="flex-row wrap ms-5 justify-evenly">
                 <% for(let i = 0; i < acceptedSessions.length ; ++i){ %>
+                    <% if(acceptedSessions[i].accepted == true && acceptedSessions[i].taken == true  ){ %>
             <!-- Appointment -->
-            <div class="flex-col border" id="j<%= i %>">
+            <div class="flex-col border p-4" id="j<%= i %>">
                 <div class="flex-row ps-3 pt-3">
                     <p class=" pe-2">Tarih:</p>
                     <p class=" pe-3"><%= acceptedSessions[i].date %></p>
@@ -173,19 +177,24 @@
                 </div>
                 <div class="flex-row ps-3">
                     <p class=" pe-2">Müşteri:</p>
-                    <p class=" pe-3"><%= acceptedSessions[i].user %></p>
+                    <p class=" pe-3"><%= acceptedSessions[i].user.name %></p>
                 </div>
                 <div class="flex-row ps-3">
                     <p class=" pe-2">Süre:</p>
                     <p class=" pe-3"><%= acceptedSessions[i].duration %></p>
                 </div>
                 
-                <div class="flex-row justify-end me-3 pointer"><i class="bi bi-trash3" onclick="cancel('<%= acceptedSessions[i]._id %>','<%= counselor.name %>','<%= i %>')"></i></div>
+                <div class="flex-row justify-end me-3 pointer">
+                    <button class="btn btn2 disabled"  id="s<%= i %>"  onclick="window.location.href='/session'">Başla</button>
+                    <i class="bi bi-trash3 ms-3 mt-4" onclick="cancel('<%= acceptedSessions[i]._id %>','<%= counselor.name %>','<%= i %>')"></i>
+                    
+                </div>
                 
                 
                 
                 
             </div>
+            <% }%>
             <% }%>
             <!-- /Appointment -->
             
@@ -205,9 +214,7 @@
      <script id="requested" type="application/json">
         <%-JSON.stringify(requestedApps) %>
      </script>
-     <script id="user" type="application/json">
-        <%-JSON.stringify(users) %>
-     </script>
+
      <script id="accepted" type="application/json">
         <%-JSON.stringify(acceptedSessions) %>
      </script>

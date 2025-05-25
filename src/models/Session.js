@@ -12,12 +12,12 @@ const sessionSchema = new mongoose.Schema({
     user:{ //get the user's id that took this session
          
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'User' // Refers to the "User" model
+        ref: 'user' // Refers to the "User" model
         
     },
     counselor:{
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Counselor', // Refers to the "User" model
+        ref: 'counselor', // Refers to the "User" model
         required:true
     },
     duration:{ // stored in seconds

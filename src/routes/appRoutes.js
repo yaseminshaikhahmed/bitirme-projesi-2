@@ -7,7 +7,10 @@ const router = Router()
 //Users
 //Display all counselors 
 router.get('/counselors',requireAuth, checkUser, appController.counselors_get)
-router.get('/appointments',requireAuth, checkUser, appController.get_apps)
+router.get('/appointments',requireAuth, checkUser, getUser, appController.get_apps)
+router.get('/appointments/:id',requireAuth, checkUser, appController.get_app)
+router.patch('/appointments/:id',requireAuth, checkUser, appController.patch_app)
+router.get('/appointments/p/:id',requireAuth, checkUser, appController.get_app_after)
 //display a specific counselor
 router.get('/:id',requireAuth, checkUser, appController.counselor_get)
 router.get('/:id/book',requireAuth, checkUser, appController.appointment_get)

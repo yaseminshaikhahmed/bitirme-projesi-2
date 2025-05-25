@@ -8,6 +8,6 @@ router.get('/homepage', checkUser,requireAuth, getUser, homepageController.homep
 router.post('/homepage', checkUser, getUser, homepageController.homepage_post)
 
 //delete a notification
-router.delete('/homepage', checkUser, requireAuth, homepageController.homepage_delete)
+router.delete('/homepage/delete', checkUser, requireAuth, homepageController.homepage_delete)
 
 module.exports = router

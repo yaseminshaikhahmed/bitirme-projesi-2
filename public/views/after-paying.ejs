@@ -1,32 +1,46 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ödeme Tamamlandı</title>
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/btn.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ödeme Tamamlandı</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/btn.css">
 </head>
-<body>
-    <div class="d-flex flex-column align-items-center p-5 text-center">
-        <h1 class="mb-3">Ödeme Tamamlandı</h1>
-        <h3 class="mb-4">Danışmana mesaj gönderebilirsiniz</h3>
+<body class="bg-light">
 
-        <div class="w-75 mb-3">
-            <label for="message" class="visually-hidden">Mesajınız</label>
-            <textarea id="message" class="form-control" rows="4" placeholder="Mesajınızı buraya yazın..."></textarea>
-        </div>
+  <div class="container d-flex flex-column align-items-center justify-content-center min-vh-100 text-center p-4">
+    <div class="card p-5 shadow rounded-4" style="max-width: 600px;">
 
-        <div class="d-flex gap-2 justify-end w-75">
-            <!-- <button type="button" class="btn btn2" onclick="window.location.href='/appointments'">Randevularım</button> -->
-            <button type="submit" class="btn btn2">Gönder</button>
-        </div>
+      <!-- Success Icon -->
+      <div class="mb-4" style="font-size: 64px;">✅</div>
+
+      <h1 class="mb-3">Ödemeniz Alındı!</h1>
+      <p class="fs-5 mb-4">Danışmanınız en kısa sürede talebinizi onaylayacaktır. Onaylanmazsa, ödemeniz otomatik olarak iade edilecektir.</p>
+
+      <!-- Optional: Session Summary -->
+      <!-- <div class="text-start mb-4">
+        <h5>Randevu Bilgileri:</h5>
+        <ul class="list-unstyled fs-6">
+          <li><strong>Tarih:</strong> 26 Mayıs 2025</li>
+          <li><strong>Danışman:</strong> Dr. Ayşe Yılmaz</li>
+          <li><strong>Ücret:</strong> 450₺</li>
+        </ul>
+      </div> -->
+
+      <!-- Buttons -->
+      <div class="d-flex gap-2 justify-content-center">
+        <a href="/appointments" class="btn btn2">Randevularım</a>
+        <a href="/homepage" class="btn btn2 btn-outline-secondary">Anasayfa</a>
+      </div>
+
     </div>
+  </div>
 
-    <!-- Optional: Bootstrap JS if needed -->
-    <script src="../js/bootstrap.bundle.min.js"></script>
+  <!-- Optional: Bootstrap JS -->
+  <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

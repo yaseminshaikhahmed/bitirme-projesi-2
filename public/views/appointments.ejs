@@ -17,22 +17,31 @@
 
         <div class="row g-4">
 
-            <!-- Appointment Card -->
             
+            <% for(let i = apps.length - 1  ; i >= 0 ; --i) { %>
+                <% if(apps[i].completed == false && apps[i].cancelled == false) {%>
 
-            <!-- Another Appointment -->
+            <!--  Appointment -->
             <div class="col-md-6 col-lg-4">
                 <div class="card shadow-sm rounded-4">
                     <div class="card-body">
-                        <h5 class="card-title">Danışman: Elif Demir</h5>
-                        <p class="card-text mb-1">📅 Tarih: 24 Mayıs 2025</p>
-                        <p class="card-text">⏰ Saat: 16:30</p>
-                        <div class="flex-row justify-center"><button class="btn btn2 mt-2" onclick="window.location.href='/session/456'">Görüşmeye Git</button></div>
+                        <h5 class="card-title">Danışman: <%= apps[i].counselor.name %></h5>
+                        <p class="card-text mb-1"> Tarih: <%= apps[i].date %></p>
+                        <p class="card-text"> Saat: <%= apps[i].time %></p>
+                        <p class="card-text"> Fiyat: <%= apps[i].price %></p>
+                        <% if( apps[i].accepted == false) { %>
+                        <p class="card-text"> durum : Hala onaylanmadı</p>
+                         <% } else if ( apps[i].accepted == true){ %>
+                            <p class="card-text"> durum :  onaylandı</p>
+                           <% } %> 
+                        <div class="flex-row justify-center"><button class="btn btn2 mt-2 disabled" id="s<%= i %>" onclick="startCall('<%= apps[i]._id %>')">Görüşmeye Git</button></div>
                     </div>
                 </div>
             </div>
 
             <!-- You can add more appointments by copying a card -->
+             <% } %>
+             <% } %>
 
         </div>
 
@@ -44,20 +53,29 @@
 
         <div class="row g-4">
 
-            <!-- Appointment Card -->
             
-
-            <!-- Another Appointment -->
+            <% for(let i = apps.length - 1  ; i >= 0 ; --i) { %>
+                <% if(apps[i].completed == true || apps[i].cancelled == true) {%>
+            <!--  Appointment -->
             <div class="col-md-6 col-lg-4">
                 <div class="card shadow-sm rounded-4">
                     <div class="card-body">
-                        <h5 class="card-title">Danışman: Elif Demir</h5>
-                        <p class="card-text mb-1">📅 Tarih: 24 Mayıs 2025</p>
-                        <p class="card-text">⏰ Saat: 16:30</p>
-                        <div class="flex-row justify-center"><button class="btn btn2 mt-2" onclick="window.location.href='/session/456'">Değerlendir</button></div>
+                        <h5 class="card-title">Danışman:<%= apps[i].counselor.name %> </h5>
+                        <p class="card-text mb-1"> Tarih:<%=  apps[i].date %></p>
+                        <p class="card-text"> Saat: <%= apps[i].time %></p>
+                        <p class="card-text"> Fiyat: <%= apps[i].price %></p>
+                        <% if( apps[i].completed == true ) { %>
+                        <p class="card-text"> durum : Tamamlandı</p>
+                         <% } else if ( apps[i].cancelled == true){ %>
+                            <p class="card-text"> durum : Iptal edildi</p>
+                           <% } %> 
+                        <div class="flex-row justify-center"><button class="btn btn2 mt-2">Değerlendir</button></div>
                     </div>
                 </div>
             </div>
+            <% } %>
+            <% } %>
+
 
             <!-- You can add more appointments by copying a card -->
 
@@ -65,6 +83,10 @@
 
         
     </div>
+    <script id="apps" type="application/json">
+        <%- JSON.stringify(apps) %>
+    </script>
+    <script src="../js/appointments.js"></script>
 
     <script src="../js/bootstrap.bundle.min.js"></script>
 </body>

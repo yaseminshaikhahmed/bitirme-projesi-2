@@ -17,7 +17,7 @@
   })
   if(res){
     alert('randevu alindi')
-   window.location.href  = `/appointments/${info._id}` 
+   window.location.href  = `/appointments/p/${info._id}` 
   }
   else{
     alert('randevu alinmiyor')

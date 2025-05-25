@@ -97,7 +97,7 @@ function getWeekDays(month, year) {
     for(let i = 0 ; i < appointments.length ; ++i ){
       let apps = extract(appointments[i].date)
 
-      if(apps.month - 1 === month && apps.year ===year && appointments[i].completed != true){
+      if(apps.month - 1 === month && apps.year ===year && appointments[i].completed != true && appointments[i].taken != true && appointments[i].accepted != true && appointments[i].cancelled != true){
        
         daysInMonth.push(apps.day)
         dates.push(appointments[i].date)
@@ -215,10 +215,30 @@ function extract(str){
   year = Number(year)
   month = Number(month)
   day = Number(day)
-  // console.log(day)
-  // console.log(month)
-  // console.log(year)
-  return { year, month, day }
+  if(isOlder(year, month, day)){
+    return { year, month, day }
+  }else{
+    return {}
+  }
+  
+
+}
+
+function isOlder(year, month, day){
+  let flag = false
+  const date = new Date()
+  const y = date.getFullYear() //current year
+  const m = date.getMonth() + 1 //current month
+  const d = date.getDate() // current day
+  if(y > year){ //year is older than the current year
+    return flag
+  }else if(year ==y && m > month){
+    return flag
+  }else if(year == y && m == month && d > day){
+    return flag 
+  }else{
+    return true
+  }
 
 }
 

@@ -114,3 +114,59 @@ form.addEventListener('submit', async(e)=>{
 
 })
 
+async function deleteNot(id){
+  try{
+      const res = await fetch(`/homepage/delete?id=${id}`, {
+        method:"DELETE",
+        
+        headers: {'Content-Type':'application/json'}
+    })
+      
+      alert("duyuru silindi")
+    }catch(err){
+      console.log(err,"Can't delete notification homepage.js")
+    }
+
+
+}
+
+function gecenZaman(dateStr, timeStr) {
+    const [gun, ay, yil] = dateStr.split('.').map(Number);
+    const [saat, dakika] = timeStr.split(':').map(Number);
+
+    const gecmisTarih = new Date(yil, ay - 1, gun, saat, dakika);
+    const simdi = new Date();
+
+    const farkMs = simdi - gecmisTarih;
+
+    if (farkMs < 0) {
+        return "Gelecekte";
+    }
+
+    const farkDakika = Math.floor(farkMs / 60000);
+    const farkSaat = Math.floor(farkDakika / 60);
+    const farkGun = Math.floor(farkSaat / 24);
+
+    if (farkGun > 0) {
+        return `${farkGun} gün önce`;
+    } else if (farkSaat > 0) {
+        return `${farkSaat} saat önce`;
+    } else {
+        return `${farkDakika} dakika önce`;
+    }
+}
+
+// Örnek kullanım:
+
+const notifications = document.getElementById('nots')
+const nots = JSON.parse(notifications.textContent)
+
+for(let i = 0 ; i < nots.length ; ++i){
+  let t = 't'+i
+  document.getElementById(t).innerHTML = gecenZaman(nots[i].date, nots[i].time)
+  
+} 
+console.log();
+
+
+

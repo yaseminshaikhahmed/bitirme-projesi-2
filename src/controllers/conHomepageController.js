@@ -7,21 +7,21 @@ module.exports.homepage_get =async (req, res)=>{
         const counselorId = req.counselor._id
         const availApps = await avail_get(req,res)
         const requestedApps = await requested_get(req,res)
-        let users = []
+        //let users = []
         const acceptedSessions = await getAccepted(counselorId)
         
-        for(let i = 0 ; i < requestedApps.length ; ++i){
-            //console.log(requestedApps[i].user)
-            users[i] = await (getUser(requestedApps[i].user))
+        // for(let i = 0 ; i < requestedApps.length ; ++i){
+        //     //console.log(requestedApps[i].user)
+        //     users[i] = await (getUser(requestedApps[i].user))
             
-        }
+        // }
         
         //const user = await User.findById(requestedApps)
         console.log(acceptedSessions)
         res.render('../public/views/counselor-homepage',{
             availApps:availApps,
             requestedApps:requestedApps,
-            users:users,
+            //users:users,
             acceptedSessions:acceptedSessions
         })
         
@@ -74,18 +74,25 @@ async function getUser(userId){
     
 }
 
-async function getAccepted(counselorId){
-    try{
+async function getAccepted(counselorId) {
+    try {
         const acceptedSessions = await Session.find({
-            counselor:counselorId,
-            accepted:'true'
-        })
-        //console.log(acceptedSessions)
-        return acceptedSessions
-    }
-    
-    catch(err){
-        console.log(err.message)
+            counselor: counselorId,
+            accepted: true // Changed from string 'true' to boolean
+        }).populate({
+            path: 'user',
+            select: 'name' // Specify fields you want to populate (optional but recommended)
+        }).lean(); // Adding .lean() for better performance if you don't need Mongoose documents
+
+        if (!acceptedSessions || acceptedSessions.length === 0) {
+            return []; // Return empty array if no sessions found
+        }
+
+        return acceptedSessions;
+    } catch (err) {
+        console.error('Error in getAcceptedSessions:', err.message);
+        throw err; // Re-throw the error to handle it in the calling function
+        // OR return null/[] if you prefer to handle it silently
     }
 }
 
@@ -118,6 +125,18 @@ module.exports.avail_post = async (req, res)=>{
         }
     }catch(err){
         res.status(400).json({message:"Error creating new availabe date", error:err.message})
+        console.log(err.message)
+    }
+}
+
+
+module.exports.sess_get = async (req, res)=>{
+    try{
+        //const id = req.params.id
+        res.render('../public/views/con-video-call')
+
+        
+    }catch(err){
         console.log(err.message)
     }
 }

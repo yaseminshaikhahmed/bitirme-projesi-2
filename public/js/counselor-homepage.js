@@ -12,6 +12,9 @@ function getNot(index){
     return list[index]
 
 }
+// const d = new Date()
+// const today = d.getUTCDate()
+// console.log("d " + today)
 //Let the counselor add available dates manually
 const form = document.getElementById("avail-form")
 form.addEventListener('submit',async(e)=>{
@@ -20,6 +23,8 @@ form.addEventListener('submit',async(e)=>{
     const time = form.time.value
     const price = form.price.value
     const duration = form.duration.value
+    
+
     const res = await fetch('/counselor-homepage',{
         method:"POST",
         body:JSON.stringify({date, time, price, duration}),
@@ -216,6 +221,33 @@ function changeMess(){
      
      `
 }
+const appointments = document.getElementById('accepted')
+const apps = JSON.parse(appointments.textContent)
+
+
+// 
+const date = new Date()
+const time =date.getHours() +":" + date.getMinutes()
+let m = date.getMonth() + 1
+if(m < 10){
+    m = '0'+m
+}
+let day = date.getDate()
+if(day < 10){
+    day = '0'+day
+}
+
+const d = date.getFullYear()+"-"+m+"-"+day
+
+ for(let i = 0  ; i < apps.length ; ++i){
+    let s = 's'+i
+    let btn = document.getElementById(s)
+    console.log(d==apps[i].date)
+    if(d==apps[i].date && (apps[i].time == time || time > apps[i].time)){
+        btn.classList.remove('disabled')
+    }
+
+ }
 function changeFeed(){
      body.innerHTML = ''
      body.innerHTML = `

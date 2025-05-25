@@ -60,15 +60,15 @@
     <i class="fa-solid fa-bell text-primary me-3"></i>
     <div>
       <p class="mb-1 fw-medium"> <%= notifications[i].content %></p>
-      <a href="#" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">See more</a>
+      <!-- <a href="#" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">See more</a> -->
     </div>
   </div>
 
   <!-- Right section -->
   <div class="d-flex flex-column justify-content-between align-items-end" style="height: 60px;">
-    <small class="text-muted">2m ago</small>
+    <small class="text-muted" id="t<%= i %>"></small>
     <!-- <button class="btn btn-sm btn-light border-0 mt-auto"> -->
-      <i class="bi bi-trash3 pointer"></i>
+      <i class="bi bi-trash3 pointer" onclick="deleteNot('<%= notifications[i]._id %>')"></i>
     <!-- </button> -->
   </div>
 
@@ -107,13 +107,13 @@
         <!-- /Footer -->
 
     </div>
-
-<script src="./js/logout.js"></script>
-<script src="./js/homepage.js"></script>
 <script id="nots" type="application/json">
   <%- JSON.stringify(notifications) %>
 
 </script>
+<script src="./js/logout.js"></script>
+<script src="./js/homepage.js"></script>
+
 
 </body>
 </html>

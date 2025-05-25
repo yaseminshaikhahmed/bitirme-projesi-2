@@ -135,7 +135,51 @@ module.exports.appointment_booked = async (req, res) =>{
 
 module.exports.get_apps = async (req, res)=>{
   try{
-    res.render('../public/views/appointments')
+    const user = req.user._id
+    const apps = await Session.find({
+      user:user
+    }).populate({
+            path: 'counselor',
+            select: 'name' // Specify fields you want to populate (optional but recommended)
+        })
+    res.render('../public/views/appointments',
+      {
+        apps:apps
+      }
+    )
+  }
+  catch(err){
+    console.log(err.message)
+  }
+}
+
+//go to appointment page (video call)
+module.exports.get_app = async (req, res)=>{
+  try{
+    
+    res.render('../public/views/video-call')
+  }
+  catch(err){
+    console.log(err.message)
+  }
+}
+module.exports.get_app_after = async (req, res)=>{
+  try{
+    
+    res.render('../public/views/after-paying')
+  }
+  catch(err){
+    console.log(err.message)
+  }
+}
+//change completed to true 
+module.exports.patch_app = async (req, res)=>{
+  try{
+    const app = req.params.id
+    const completed = await Session.findByIdAndUpdate(app,{
+      completed:true
+    })
+   
   }
   catch(err){
     console.log(err.message)
