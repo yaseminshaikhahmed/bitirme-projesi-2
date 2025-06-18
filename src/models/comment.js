@@ -4,7 +4,13 @@ const commentSchema = new mongoose.Schema({
     user:{ //get the user who left this comment 
              
             type: mongoose.Schema.Types.ObjectId, 
-            ref: 'User', // Refers to the "User" model
+            ref: 'user', // Refers to the "User" model
+            required:true
+    },
+    counselor:{ //get the user who left this comment 
+             
+            type: mongoose.Schema.Types.ObjectId, 
+            ref: 'Counselor', // Refers to the "User" model
             required:true
     },
     rating:{
@@ -26,5 +32,5 @@ const commentSchema = new mongoose.Schema({
     }
 })
 
-// const Comment = mongoose('comment', commentSchema)
-// module.exports = Comment
+const Comment = mongoose.model('comment', commentSchema)
+module.exports = Comment

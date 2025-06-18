@@ -40,6 +40,24 @@ btn.addEventListener('change', async(e)=>{
       btn.value = '0'
             
           }
+          else if(btn.value == '2'){
+  try {
+            const res = await fetch('/appointments');
+            
+            if (res.ok) {
+              location.assign('/appointments');
+            } else {
+              throw new Error('Unauthorized or failed to fetch appointments page');
+            }
+          
+          } catch (err) {
+            console.log("logout.js", err);
+            alert("Can't go to counselors page");
+          }
+          
+      btn.value = '0'
+            
+          }
 
 
 })
@@ -131,6 +149,7 @@ async function deleteNot(id){
 }
 
 function gecenZaman(dateStr, timeStr) {
+    console.log(dateStr + " " + timeStr)
     const [gun, ay, yil] = dateStr.split('.').map(Number);
     const [saat, dakika] = timeStr.split(':').map(Number);
 
@@ -147,7 +166,14 @@ function gecenZaman(dateStr, timeStr) {
     const farkSaat = Math.floor(farkDakika / 60);
     const farkGun = Math.floor(farkSaat / 24);
 
-    if (farkGun > 0) {
+    const farkYil = simdi.getFullYear() - gecmisTarih.getFullYear();
+    const farkAy = (simdi.getFullYear() - gecmisTarih.getFullYear()) * 12 + (simdi.getMonth() - gecmisTarih.getMonth());
+
+    if (farkYil > 0) {
+        return `${farkYil} yıl önce`;
+    } else if (farkAy > 0) {
+        return `${farkAy} ay önce`;
+    } else if (farkGun > 0) {
         return `${farkGun} gün önce`;
     } else if (farkSaat > 0) {
         return `${farkSaat} saat önce`;
@@ -156,6 +182,7 @@ function gecenZaman(dateStr, timeStr) {
     }
 }
 
+
 // Örnek kullanım:
 
 const notifications = document.getElementById('nots')
@@ -163,7 +190,7 @@ const nots = JSON.parse(notifications.textContent)
 
 for(let i = 0 ; i < nots.length ; ++i){
   let t = 't'+i
-  document.getElementById(t).innerHTML = gecenZaman(nots[i].date, nots[i].time)
+  document.getElementById(t).innerHTML = gecenZaman(nots[i].date, nots[i].time) //
   
 } 
 console.log();

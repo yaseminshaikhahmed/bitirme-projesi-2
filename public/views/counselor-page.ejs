@@ -21,18 +21,7 @@
                 <p>Size en uygun danışmanı seçerek mental sağlığınıza destek olun.</p>
             </div>
 
-            <!--Speciality Select-->
-
-            <div class="specialty flex-row justify-end width-75 mb-3">
-                <select class="form-select width-20" aria-label="Default select example">
-                    <option selected>Uzmanlık</option>
-                    <option value="Anksiyete">Anksiyete</option>
-                    <option value="Depresyon">Depresyon</option>
-                    <option value="Aile Danışmanlığı">Aile Danışmanlığı</option>
-                    <option value="Özgüven Geliştirme">Özgüven Geliştirme</option>
-                    <option value="Travma Terapisi">Travma Terapisi</option>
-                  </select>
-            </div>
+           
 
 
             <!-- /Header-->
@@ -52,13 +41,18 @@
                     <h3>Dr.<%= allCounselors[i].name %></h3>
                     <p class="text-center"><%= allCounselors[i].experience %></p>
                     <p class="text-center">Deneyim: <%= allCounselors[i].yearOfExperience %> Yıl</p>
-                    <div class="rating">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
+                    <p class="text-center">Yapılan Seansler : +<%= allCounselors[i].clients %> </p>
+                    <div id="stars" class="d-flex mb-3">
+                        <% for(let j = 0; j < 5; j++) { %>
+                        <% rating = allCounselors[i].rating / allCounselors[i].clients %>
+                        <% if(j < rating) { %>
+                            <span class="star-rating checked">★</span>
+                        <% } else { %>
+                            <span class="star-rating">★</span>
+                        <% } %>
+                        <% } %>
                     </div>
+                    
                     <button class="btn btn2 mt-3" onclick="window.location.href='/<%= allCounselors[i]._id %>'">Daha fazla</button>
                 </div>
             
@@ -75,6 +69,7 @@
   </script>
   <script src="../js/counselor-page.js"></script>
   <script src="../js/navbar.js"></script>
+  <script src="../js/logout.js"></script>
 
     
 </body>

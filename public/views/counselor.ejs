@@ -41,31 +41,31 @@
 
 
     <!--FeedBack-->
-    <div class="feedback-section m-5 flex-col justify-first">
-        <h3>Geri Bildirimler</h3>
-        <div class="review bg mb-3 p-3 rounded">
-            <p><strong>Ali K.</strong></p>
-            <p class="rating">★★★★★</p>
-            <p>Dr. Ahmet çok yardımcı oldu, önerilerini uygulamak hayatımı değiştirdi!</p>
-            <!-- date of review-->
-            <div class="flex-row justify-end gray">
-                <p class="me-2">29.03.2025</p>
-                <p>13:42</p>
-
-            </div>
-        </div>
-        <div class="review bg mb-3 p-3 rounded">
-            <p><strong>Elif T.</strong></p>
-            <p class="rating">★★★★☆</p>
-            <p>İyi bir danışman, ancak daha fazla seans almak isterdim.</p>
-            <!-- date of review-->
-            <div class="flex-row justify-end gray">
-                <p class="me-2">29.03.2025</p>
-                <p>13:42</p>
-
-            </div>
-        </div>
+   <div class="feedback-section m-5 flex-col justify-first">
+  <h3>Geri Bildirimler</h3>
+  <% for(let i = 0 ; i < comments.length ; ++i){ %>
+    <div class="review bg mb-3 p-3 rounded">
+      <p><strong><%= comments[i].user.name %></strong></p>
+      <div id="stars" class="d-flex mb-4">
+        <% for(let j = 0; j < 5; j++) { %>
+          <% if(j < comments[i].rating) { %>
+            <span class="star-rating filled">★</span>
+          <% } else { %>
+            <span class="star-rating">★</span>
+          <% } %>
+        <% } %>
+      </div>
+      <p><%= comments[i].content, %></p>
+      <div class="flex-row justify-end gray">
+        <p class="me-2"><%= comments[i].date %></p>
+        <p><%= comments[i].time %></p>
+      </div>
     </div>
+  <% } %>  <!-- CLOSE the for loop here -->
+</div>
+
     <!--/FeedBack-->
+    <script src="../js/navbar.js"></script>
+    <script src="../js/logout.js"></script>
 </body>
 </html>

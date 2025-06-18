@@ -59,7 +59,7 @@ async function sendNot(id, name, message){
     const d = new Date()
     const year = d.getFullYear()
     const month = d.getMonth()+1
-    const day = d.getDay()
+    const day = d.getDate()
     const date = day + "." + month + "." + year
     const hour = d.getHours()
     const minutes = d.getMinutes()
@@ -111,15 +111,28 @@ async function accept(id, name, i) {
         if(res.ok){
             
 
-            alert("onaylandi");
+                Swal.fire({
+  title: 'Randevu Onaylandı!',
+  text:'Kullanıcıya bir bildirim gönderildi',
+  icon: 'success',
+  confirmButtonColor: '#327775',  // your custom color
+  cancelButtonColor: '#6c757d',   // optional if you use a cancel button
+  confirmButtonText: 'Okay',
+  timer: 2000,
+  showConfirmButton: true
+})
             document.getElementById(c).style.display = 'none'
         }else{
-            alert("onaylanmadi")
+            Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: "Onaylanmadı"
+});
         }
         if(res2.ok){
             
 
-            alert("duyuru gonderildi");
+            //alert("duyuru gonderildi");
             document.getElementById(c).style.display = 'none'
         }else{
             alert("duyuru gonderilmedi")

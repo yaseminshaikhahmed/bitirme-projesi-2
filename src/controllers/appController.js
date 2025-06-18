@@ -1,5 +1,6 @@
 const Counselor = require('../models/Counselor')
 const Session = require('../models/Session')
+const Comment = require('../models/comment')
 const mongoose = require('mongoose')
 
 module.exports.counselors_get = async(req, res)=>{
@@ -21,9 +22,16 @@ module.exports.counselor_get = async(req, res)=>{
     try{
         const counselorId = req.params.id 
         const counselor = await Counselor.findById(counselorId)
-        console.log("counselorId = " + counselorId)
+        const comments = await Comment.find({
+                    counselor: counselorId// Changed from string 'true' to boolean
+                }).populate({
+                    path: 'user',
+                    select: 'name picture',
+                }).lean();
+        //console.log("counselorId = " + counselorId)
         res.render('../public/views/counselor',{
-            counselor:counselor
+            counselor:counselor,
+            comments:comments
         })
 
     }catch(err){
@@ -156,7 +164,8 @@ module.exports.get_apps = async (req, res)=>{
 //go to appointment page (video call)
 module.exports.get_app = async (req, res)=>{
   try{
-    
+    const id = req.params.id
+    const session = await Session.findById(id)
     res.render('../public/views/video-call')
   }
   catch(err){
@@ -179,6 +188,20 @@ module.exports.patch_app = async (req, res)=>{
     const completed = await Session.findByIdAndUpdate(app,{
       completed:true
     })
+   
+  }
+  catch(err){
+    console.log(err.message)
+  }
+}
+
+module.exports.get_feedback = async(req, res)=>{
+    try{
+      const id = req.params.id
+      const session = await Session.findById(id)
+      res.render('../public/views/feedback',{
+        session:session
+      })
    
   }
   catch(err){

@@ -1,26 +1,26 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <title>Görüşme Başlat</title>
-  <script src='https://meet.jit.si/external_api.js'></script>
-</head>
-<body>
-  <!-- <h1>Danışman Görüşmesi</h1> -->
-  <div id="jitsi-container" style="height: 600px; width: 100%;"></div>
 
-  <script>
-    const domain = "meet.jit.si";
-    const options = {
-        roomName: "123",
-        width: "100%",
-        height: 600,
-        parentNode: document.getElementById("jitsi-container"),
-        userInfo: {
-            displayName: "Kay"
-        }
-    };
-    const api = new JitsiMeetExternalAPI(domain, options);
-  </script>
-</body>
-</html>
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <script src='https://8x8.vc/vpaas-magic-cookie-350410885a6a48459b50bafa03bb75e9/external_api.js' async></script>
+        <style>html, body, #jaas-container { height: 100%; }</style>
+        <script type="text/javascript">
+window.onload = () => {
+  const api = new JitsiMeetExternalAPI("8x8.vc", {
+    roomName: "vpaas-magic-cookie-350410885a6a48459b50bafa03bb75e9/SampleAppUltimateResponsesFrameHence",
+    parentNode: document.querySelector('#jaas-container')
+  });
+
+  // Listen for the conference left event
+  api.addEventListener('videoConferenceLeft', () => {
+    // Show a feedback prompt, redirect, or modal
+    
+      window.location.href = "/feedback/<%=session.id%>"; // Or your feedback form URL
+    
+  });
+}
+        </script>
+      </head>
+      <body><div id="jaas-container" /></body>
+    </html>
+  

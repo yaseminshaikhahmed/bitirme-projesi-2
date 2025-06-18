@@ -1,0 +1,25 @@
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .feedback-card {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background: #ffffff;
+    }
+
+    .star-rating {
+      font-size: 35px;
+      color: #ddd;
+      cursor: pointer;
+    }
+    .star-rating:hover{
+        color: #ffc107;
+    }
+
+    .star-rating .filled {
+      color: #ffc107;
+    }

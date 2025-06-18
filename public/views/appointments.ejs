@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/btn.css">
+    <link rel="stylesheet" href="../css/navbar.css">
 </head>
 <body class="bg-light">
 
+<%- include('navbar') %>
     <div class="container py-5">
         <h1 class="text-center mb-4">Yaklaşan Randevularım</h1>
 
@@ -19,7 +21,7 @@
 
             
             <% for(let i = apps.length - 1  ; i >= 0 ; --i) { %>
-                <% if(apps[i].completed == false && apps[i].cancelled == false) {%>
+                <% if(apps[i].completed == false && apps[i].cancelled == false && apps[i].declined == false) {%>
 
             <!--  Appointment -->
             <div class="col-md-6 col-lg-4">
@@ -55,7 +57,7 @@
 
             
             <% for(let i = apps.length - 1  ; i >= 0 ; --i) { %>
-                <% if(apps[i].completed == true || apps[i].cancelled == true) {%>
+                <% if(apps[i].completed == true || apps[i].cancelled == true || apps[i].declined == true) {%>
             <!--  Appointment -->
             <div class="col-md-6 col-lg-4">
                 <div class="card shadow-sm rounded-4">
@@ -64,12 +66,14 @@
                         <p class="card-text mb-1"> Tarih:<%=  apps[i].date %></p>
                         <p class="card-text"> Saat: <%= apps[i].time %></p>
                         <p class="card-text"> Fiyat: <%= apps[i].price %></p>
-                        <% if( apps[i].completed == true ) { %>
-                        <p class="card-text"> durum : Tamamlandı</p>
-                         <% } else if ( apps[i].cancelled == true){ %>
-                            <p class="card-text"> durum : Iptal edildi</p>
-                           <% } %> 
-                        <div class="flex-row justify-center"><button class="btn btn2 mt-2">Değerlendir</button></div>
+                        <% if (apps[i].completed == true) { %>
+                        <p class="card-text">durum : Tamamlandı</p>
+                        <% } else if (apps[i].cancelled == true) { %>
+                        <p class="card-text">durum : İptal edildi</p>
+                        <% } else if (apps[i].declined == true) { %>
+                        <p class="card-text">durum : Reddedildi</p>
+                        <% } %>
+                        <div class="flex-row justify-center"><button class="btn btn2 mt-2" onclick="window.location='/feedback/<%= apps[i]._id %>'">Değerlendir</button></div>
                     </div>
                 </div>
             </div>
@@ -87,6 +91,8 @@
         <%- JSON.stringify(apps) %>
     </script>
     <script src="../js/appointments.js"></script>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/logout.js"></script>
 
     <script src="../js/bootstrap.bundle.min.js"></script>
 </body>

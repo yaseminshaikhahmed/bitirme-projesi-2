@@ -21,9 +21,7 @@
                     <option selected value="0">Anasaysfa</option>
                     <option value="1">Profile</option>
                     <option value="2">Randevular</option>
-                    <option value="3">Mesajlar</option>
                     <option value="4">Danışmanlar</option>
-                    <option value="5">Grup terapi</option>
                     <option value="6" id="logout">Log out</option>
                   </select>
             </div>
@@ -52,7 +50,7 @@
 <h1 class="mt-3">Yeni Bildirimler</h1>
 
         <!-- Appointments & Reminders -->
-<% for(let i = 0 ; i < notifications.length ; i++) { %>
+<% for(let i = notifications.length -1 ; i >= 0  ; i--) { %>
 <div class="d-flex align-items-center bg-white border rounded shadow p-3 my-3 w-75 justify-content-between">
 
   <!-- Left section -->
@@ -78,22 +76,7 @@
         <!-- /Appointments & Reminders -->
          
 
-        <!-- Community & Support Groups -->
-         <div class="flex-col justify-center align-center bg-white border width-75 mt-5 height">
-            <h3>Topluluk & Destek Grupları</h3>
-            <p>Anksiyete, depresyon veya farkındalık için bir destek grubuna katılın.</p>
-            <p>Henüz hiç bir gruba katılmadın</p>
-            <button class="btn">Grubu bul</button>
-         </div>
-        <!-- /Community & Support Groups -->
 
-
-        <!-- Mental Health Tips-->
-        <div class="flex-col justify-center align-center bg-white border width-75 mt-5 height">
-            <h3>Günün Zihinsel Sağlık İpucu</h3>
-            <p>Bugünün İpucu: 5 dakikalık nefes alma molası verin. Gözlerinizi kapatın, derin nefes alın ve yavaşça verin.</p>
-
-        </div>
         
         <!--/ Mental Health Tips-->
 

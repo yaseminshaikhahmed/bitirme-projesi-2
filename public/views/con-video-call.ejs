@@ -1,26 +1,21 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <title>Görüşme Başlat</title>
-  <script src='https://meet.jit.si/external_api.js'></script>
-</head>
-<body>
-  <!-- <h1>Danışman Görüşmesi</h1> -->
-  <div id="jitsi-container" style="height: 600px; width: 100%;"></div>
 
-  <script>
-    const domain = "meet.jit.si";
-    const options = {
-        roomName: "123",
-        width: "100%",
-        height: 600,
-        parentNode: document.getElementById("jitsi-container"),
-        userInfo: {
-            displayName: "Ahmet"
-        }
-    };
-    const api = new JitsiMeetExternalAPI(domain, options);
-  </script>
-</body>
-</html>
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <script src='https://8x8.vc/vpaas-magic-cookie-350410885a6a48459b50bafa03bb75e9/external_api.js' async></script>
+        <style>html, body, #jaas-container { height: 100%; }</style>
+        <script type="text/javascript">
+          window.onload = () => {
+            const api = new JitsiMeetExternalAPI("8x8.vc", {
+              roomName: "vpaas-magic-cookie-350410885a6a48459b50bafa03bb75e9/SampleAppUltimateResponsesFrameHence",
+              parentNode: document.querySelector('#jaas-container'),
+							// Make sure to include a JWT if you intend to record,
+							// make outbound calls or use any other premium features!
+							// jwt: "eyJraWQiOiJ2cGFhcy1tYWdpYy1jb29raWUtMzUwNDEwODg1YTZhNDg0NTliNTBiYWZhMDNiYjc1ZTkvYmJhYjI4LVNBTVBMRV9BUFAiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJqaXRzaSIsImlzcyI6ImNoYXQiLCJpYXQiOjE3NDgyNDc3OTQsImV4cCI6MTc0ODI1NDk5NCwibmJmIjoxNzQ4MjQ3Nzg5LCJzdWIiOiJ2cGFhcy1tYWdpYy1jb29raWUtMzUwNDEwODg1YTZhNDg0NTliNTBiYWZhMDNiYjc1ZTkiLCJjb250ZXh0Ijp7ImZlYXR1cmVzIjp7ImxpdmVzdHJlYW1pbmciOmZhbHNlLCJvdXRib3VuZC1jYWxsIjpmYWxzZSwic2lwLW91dGJvdW5kLWNhbGwiOmZhbHNlLCJ0cmFuc2NyaXB0aW9uIjpmYWxzZSwicmVjb3JkaW5nIjpmYWxzZX0sInVzZXIiOnsiaGlkZGVuLWZyb20tcmVjb3JkZXIiOmZhbHNlLCJtb2RlcmF0b3IiOnRydWUsIm5hbWUiOiJUZXN0IFVzZXIiLCJpZCI6Imdvb2dsZS1vYXV0aDJ8MTE1OTg4Njc5OTM2NDQzMzU4MzA0IiwiYXZhdGFyIjoiIiwiZW1haWwiOiJ0ZXN0LnVzZXJAY29tcGFueS5jb20ifX0sInJvb20iOiIqIn0.AWKQEMz7LA3c6NtHEtpOY_6gydpRQKZgKxKiNnx6EMxXxbTrc1FJ9DhSqWrbiFWESKGwgpBY2bXjKdp54fk4insg7SRaQ8pSFP-ny-FrLpDzJ4ivz15cQ62n1q60Ta0j2StZKbwmZE9WEmckjI0Et4Z9-s5iinIfusQDjmEb_WXsp-RrFRHArepDnKw2myTwPwEEajTR5IfUzxk3BQ20Of1JBaqGUe62_zFg60T2YqgGvbNe2F9MDt53okYujpJqulYD6ogcwUuAzJ937sEDQKOzZk0U8yO32RQGrQo0jFafOB6Fz-Rh-JIXPqkqBplRUdFQYBOTfbFtCCa0-kH7DA"
+            });
+          }
+        </script>
+      </head>
+      <body><div id="jaas-container" /></body>
+    </html>
+  

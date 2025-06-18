@@ -22,14 +22,14 @@ btn.addEventListener('change', async(e)=>{
           }
           
       btn.value = '0'
-}else if(btn.value == '4'){
+}else if(btn.value == '2'){
   try {
-            const res = await fetch('/counselors');
+            const res = await fetch('/appointments');
             
             if (res.ok) {
-              location.assign('/counselors');
+              location.assign('/appointments');
             } else {
-              throw new Error('Unauthorized or failed to fetch counselors page');
+              throw new Error('Unauthorized or failed to fetch appointments page');
             }
           
           } catch (err) {

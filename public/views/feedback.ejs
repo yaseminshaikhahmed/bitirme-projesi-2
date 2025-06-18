@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Geri Bildirim</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/btn.css">
+  <link rel="stylesheet" href="../css/feedback.css">
+
+</head>
+
+<body>
+
+  <div class="feedback-card text-center">
+    <h2 class="mb-4">Görüşmenizi Değerlendirin</h2>
+    <p class="mb-3">Danışmanınızla yaptığınız görüşmeyi kaç yıldızla değerlendirirsiniz?</p>
+
+    <div id="stars" class="d-flex justify-content-center gap-2 mb-4">
+      <span class="star-rating" id="1" onmouseover="fill(this)" onmouseout="unfill(this)" onclick="rate(this)">★</span>
+      <span class="star-rating" id="2" onmouseover="fill(this)" onmouseout="unfill(this)" onclick="rate(this)">★</span>
+      <span class="star-rating" id="3" onmouseover="fill(this)" onmouseout="unfill(this)" onclick="rate(this)">★</span>
+      <span class="star-rating" id="4" onmouseover="fill(this)" onmouseout="unfill(this)" onclick="rate(this)">★</span>
+      <span class="star-rating" id="5" onmouseover="fill(this)" onmouseout="unfill(this)" onclick="rate(this)">★</span>
+    </div>
+
+    <form id="feedbackForm">
+  <div class="form-group mb-3">
+    <textarea id="comment" name="comment" class="form-control" rows="4" placeholder="Dilerseniz yorum bırakabilirsiniz..."></textarea>
+  </div>
+
+  <input type="hidden" name="rating" id="rating">
+
+  <button type="submit" class="btn btn2">Gönder</button>
+</form>
+
+
+    <div class="mt-4">
+      <a href="/appointments" class="text-muted">Randevularıma Dön</a>
+    </div>
+  </div>
+  
+<script id="session" type="application/json">
+    <%- JSON.stringify(session) %>
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script src="../js/feedback.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  
+</body>
+
+</html>

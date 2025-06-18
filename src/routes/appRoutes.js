@@ -6,6 +6,7 @@ const router = Router()
 
 //Users
 //Display all counselors 
+router.get('/feedback/:id',requireAuth, checkUser, appController.get_feedback)
 router.get('/counselors',requireAuth, checkUser, appController.counselors_get)
 router.get('/appointments',requireAuth, checkUser, getUser, appController.get_apps)
 router.get('/appointments/:id',requireAuth, checkUser, appController.get_app)
@@ -21,6 +22,7 @@ router.patch('/:id/book',requireAuth, checkUser, getUser, appController.appointm
 router.get('/:s_id/pay',requireAuth, checkUser, appController.get_pay)
 
 router.get('/appointments/:s_id',requireAuth, checkUser, appController.appointment_booked)
+
 
 
 

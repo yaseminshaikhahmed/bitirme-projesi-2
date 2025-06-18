@@ -1,5 +1,5 @@
 const Notification = require('../models/notification')
-const Counselor = require('../models/counselor')
+const Counselor = require('../models/Counselor')
 const Session = require('../models/Session')
 
 function getNot(index){
@@ -45,8 +45,8 @@ module.exports.remove_user = async(req,res)=>{
     try{
         const updated = await Session.updateOne(
             { _id: app },
-            { $set: { user: null } }
-        )
+            { $set: { declined: true } }
+            )
         
 
 
@@ -63,6 +63,7 @@ module.exports.request_accept = async(req, res)=>{
             { _id: app },
             { $set: { accepted: true } }
         )
+        res.status(200).send({message:"Randevu Onaylandı"})
         
 
 

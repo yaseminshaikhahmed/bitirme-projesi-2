@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const counselor = require('./counselor')
+const counselor = require('./Counselor')
 
 const notificationSchema = mongoose.Schema({
     content:{

@@ -43,8 +43,7 @@ const counselorSchema = new mongoose.Schema({
 counselorSchema.add({
     rating:{
         type:Number,
-        max:5,
-        default:5,
+        default:0
     },
     clients:{
         type:Number,

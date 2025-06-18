@@ -1,5 +1,6 @@
 const Session = require('../models/Session')
 const User = require('../models/User')
+const Comment = require('../models/comment')
 
 
 module.exports.homepage_get =async (req, res)=>{
@@ -49,7 +50,10 @@ async function requested_get(req, res){
         //console.log("counselorId: "+counselorId)
         const requestedApps = await Session.find({counselor:counselorId,
             user: { $ne: null }
-        })
+        }).populate({
+            path: 'user',
+            select: 'name' // Specify fields you want to populate (optional but recommended)
+        }).lean();
         
         //console.log("Available appointments:"+availApps)
         return requestedApps
@@ -134,6 +138,28 @@ module.exports.sess_get = async (req, res)=>{
     try{
         //const id = req.params.id
         res.render('../public/views/con-video-call')
+
+        
+    }catch(err){
+        console.log(err.message)
+    }
+}
+
+module.exports.feed_get = async (req, res)=>{
+    try{
+        const counselorId = req.counselor._id
+
+         const comments = await Comment.find({
+            counselor: counselorId// Changed from string 'true' to boolean
+        }).populate({
+            path: 'user',
+            select: 'name picture',
+        }).lean(); 
+
+
+        res.render('../public/views/counselor-feed', {
+            comments:comments
+        })
 
         
     }catch(err){

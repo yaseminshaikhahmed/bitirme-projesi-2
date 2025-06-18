@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geri Bildirimler</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/btn.css">
+  <link rel="stylesheet" href="./css/counselor-page.css">
+  <link rel="stylesheet" href="./css/styles.css">
+  <style>
+    .feedback-section {
+      max-width: 800px;
+      margin: 50px auto;
+    }
+
+    .review {
+      background-color: #f8f9fa;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .star-rating {
+      color: #ccc;
+      font-size: 1.2rem;
+      margin-right: 3px;
+    }
+
+    .star-rating.filled {
+      color: #ffc107;
+    }
+
+    .review img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .review p {
+      margin: 0;
+    }
+
+    .pointer {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="feedback-section">
+    <div class="text-center mb-5">
+      <h3>Geri Bildirimler</h3>
+    </div>
+
+    <% for(let i = 0 ; i < comments.length ; ++i) { %>
+    <div class="review p-4 rounded mb-4 border">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="d-flex align-items-center">
+          <img src="../images/<%= comments[i].user.picture %>" alt="">
+          <p class="ms-3 fw-bold"><%= comments[i].user.name %></p>
+        </div>
+        <div class="text-muted small">
+          <span class="me-2"><%= comments[i].time %></span>
+          <span><%= comments[i].date %></span>
+        </div>
+      </div>
+
+      <div id="stars" class="d-flex mb-3">
+        <% for(let j = 0; j < 5; j++) { %>
+          <% if(j < comments[i].rating) { %>
+            <span class="star-rating filled">★</span>
+          <% } else { %>
+            <span class="star-rating">★</span>
+          <% } %>
+        <% } %>
+      </div>
+
+      <p class="mb-3"><%= comments[i].content %></p>
+
+      <div class="text-end">
+        <i class="bi bi-trash3 text-danger pointer"></i>
+      </div>
+    </div>
+    <% } %>
+
+  </div>
+
+  <script id="comments" type="application/json">
+    JSON.stringify(<%- comments %>)
+  </script>
+
+</body>
+</html>
