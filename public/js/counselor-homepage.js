@@ -1,3 +1,49 @@
+select = document.querySelector('select')
+
+
+//moving to another page
+select.addEventListener('change', async(e)=>{
+    e.preventDefault() 
+
+    if(select.value == '0'){ // if the user chooses to go to the profile page
+        //alert("Profile is clicked")
+        try {
+            const res = await fetch('/counselor-homepage');
+            
+            if (res.ok) {
+              location.assign('/counselor-homepage');
+            } else {
+              throw new Error('Unauthorized or failed to fetch profile');
+            }
+          
+          } catch (err) {
+            console.log("logout.js", err);
+            alert("Can't go to profile page");
+          }
+          
+      select.value = '0'
+}else if(select.value == '3'){
+  try {
+            const res = await fetch('/counselor-feed');
+            
+            if (res.ok) {
+              location.assign('/counselor-feed');
+            } else {
+              throw new Error('Unauthorized or failed to fetch appointments page');
+            }
+          
+          } catch (err) {
+            console.log("logout.js", err);
+            alert("Can't go to counselors page");
+          }
+          
+      select.value = '0'
+            
+          }
+
+
+})
+
 const requestedApps = document.getElementById('requested')
 const reqApps = JSON.parse(requestedApps.textContent)
 const reqSize = reqApps.length

@@ -2,11 +2,10 @@
     font-family: Arial, Helvetica, sans-serif;
     
 }
-body{
-    display: flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content: center;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #navbarNavAltMarkup{
@@ -34,11 +33,13 @@ img{
     width: 100%;
 }
 
-#first-con{
+#first-con {
     display: flex;
     background-color: #ebf0f3;
-    height: 83vh;
+    min-height: 100vh;
+    width: 100%;
 }
+
 .right{
     width: 40%;
     display: flex;
@@ -228,32 +229,46 @@ footer{
 
 @media (max-width: 1000px){
     .left{
-        display:none;
+        display: none;
     }
     .right{
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        width: 200%;
-        margin: 300px;
-        font: 40px;
+        width: 90%;
+        margin: 50px 0;
+        text-align: center;
     }
     .left2{
-        display:none !important;
+        display: none !important;
     }
     #sec-con{
-        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        text-align: center;
+        padding: 20px;
     }
-    .right2{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 100%;
-        margin: 300px;
-        font: 40px;
+    #right2{
+        width: 90%;
+        margin: 20px 0;
     }
+   
     
+    /* Adjust testimonial card size */
+    .testimonial-card{
+        width: 90%;
+        padding: 40px 20px;
+    }
+    /* Adjust contact section width */
+    #fifth-con{
+        width: 90%;
+        padding: 30px;
+    }
+    .form-control{
+        width: 100%;
+    }
+    form{
+        padding: 20px 0;
+    }
 }
-

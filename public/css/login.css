@@ -73,6 +73,7 @@ form{
     padding-right: 25px;
     /* margin-left: 4vw; */
     width: 70%;
+    display: block;
     
 }
 .btn:hover{
@@ -87,7 +88,6 @@ input{
     padding: 10px;
     margin-top: 18px !important;
     font-size: 20px !important;
-    width: 30vw;
     
     
 }
@@ -154,22 +154,12 @@ a{
 }
 
 @media (max-width: 1050px){
-    #pics{
+    #left{
         display:none;
     }
     #main-div{
         display: flex;
         justify-content: center;
-    }
-    
-}
-
-@media (max-width: 600px){
-    input{
-        width: 50vw;
-    }
-    .btn{
-        padding: 40px;
     }
     
 }
